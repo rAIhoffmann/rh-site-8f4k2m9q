@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KI in Wirkung bringen | Dr. Rainer Hoffmann</title>
+  <meta name="description" content="Professionelle Webseite zu KI, Führung, Organisationsentwicklung und Responsible AI von Dr. Rainer Hoffmann." />
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --bg-strong: #fbfaf7;
+      --surface: rgba(255,255,255,0.8);
+      --surface-strong: #ffffff;
+      --text: #1f211d;
+      --muted: #63665f;
+      --line: #d9d6d0;
+      --accent: #2f4f4f;
+      --accent-soft: #e8efee;
+      --shadow: 0 18px 40px rgba(20, 24, 20, 0.07);
+      --radius: 22px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: linear-gradient(180deg, var(--bg-strong) 0%, var(--bg) 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(247, 246, 243, 0.82);
+      border-bottom: 1px solid rgba(217, 214, 208, 0.8);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-size: 0.96rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .contact-link:hover,
+    .text-link:hover,
+    .btn:hover {
+      opacity: 0.82;
+    }
+
+    main {
+      padding: 34px 0 84px;
+    }
+
+    section {
+      padding: 44px 0;
+    }
+
+    .hero {
+      padding-top: 54px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .eyebrow,
+    .meta-label {
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      margin-bottom: 16px;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 5.8vw, 5rem);
+      line-height: 0.98;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3vw, 2.9rem);
+      line-height: 1.04;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      font-size: 1.18rem;
+      color: #2d2f2a;
+      max-width: 760px;
+      margin-bottom: 14px;
+    }
+
+    .hero-note,
+    .section-intro,
+    .muted,
+    .card p,
+    .publication p,
+    .about-text p,
+    .contact-copy,
+    .footer,
+    .role-item span,
+    .bullet-list li {
+      color: var(--muted);
+    }
+
+    .hero-card,
+    .card,
+    .publication,
+    .photo-card,
+    .quote-box,
+    .contact-panel {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .hero-card,
+    .card,
+    .publication,
+    .quote-box,
+    .contact-panel {
+      padding: 24px;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .role-list {
+      display: grid;
+      gap: 15px;
+      margin-top: 16px;
+    }
+
+    .role-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .grid-3,
+    .grid-2 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      min-height: 230px;
+    }
+
+    .card .meta-label,
+    .publication .tag,
+    .mini-label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      margin-bottom: 14px;
+    }
+
+    .publication {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 280px;
+    }
+
+    .publication .meta {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .publication .readmore {
+      margin-top: auto;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .publication.placeholder {
+      border: 1px dashed var(--line);
+      background: rgba(255,255,255,0.5);
+      box-shadow: none;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .about-text p + p {
+      margin-top: 16px;
+    }
+
+    .key-question {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+      background: rgba(232, 239, 238, 0.55);
+      border-radius: 14px;
+    }
+
+    .key-question strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .key-question span {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+
+    .quote-box p {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.28rem;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .bullet-list {
+      padding-left: 18px;
+      margin: 14px 0 0;
+    }
+
+    .bullet-list li + li {
+      margin-top: 8px;
+    }
+
+    .photo-card {
+      overflow: hidden;
+      background: linear-gradient(180deg, #f0f3f1 0%, #e4ebe9 100%);
+      border: 1px dashed #b7c3bf;
+    }
+
+    .photo-placeholder {
+      aspect-ratio: 4 / 5;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      text-align: center;
+      color: var(--accent);
+    }
+
+    .photo-placeholder strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .photo-placeholder span {
+      max-width: 240px;
+      color: #4f645f;
+      font-size: 0.95rem;
+    }
+
+    .photo-caption {
+      padding: 16px 18px 18px;
+      border-top: 1px dashed #b7c3bf;
+      color: var(--muted);
+      font-size: 0.92rem;
+      background: rgba(255,255,255,0.66);
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-link {
+      display: block;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+    }
+
+    .contact-link strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.96rem;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 48px;
+      font-size: 0.94rem;
+    }
+
+    .text-link {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .section-head,
+      .grid-3,
+      .grid-2,
+      .about-layout,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: unset;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .topbar {
+        position: static;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      main {
+        padding-top: 12px;
+      }
+
+      section {
+        padding: 32px 0;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 12vw, 3.4rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top">Dr. Rainer Hoffmann</a>
+      <nav class="nav-links" aria-label="Navigation">
+        <a href="#themen">Woran ich arbeite</a>
+        <a href="#beitraege">Beiträge</a>
+        <a href="#ueber">Über mich</a>
+        <a href="#gespraech">Gespräch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Führung · Beratung · Lehre</div>
+        <h1>KI in Wirkung bringen</h1>
+        <p class="lead">Ich beschäftige mich mit den vielfältigen organisatorischen und gesellschaftlichen Chancen sowie Herausforderungen beim Einsatz von KI.</p>
+        <p class="lead">Als Führungskraft, Berater und Lehrender arbeite ich an der Frage, wie Künstliche Intelligenz in Organisationen wirksam wird — jenseits von Hype oder rein technischer Einführung.</p>
+        <p class="lead">Dabei gilt es, das Spannungsverhältnis aus Möglichkeiten, organisationellen Gegebenheiten und Anspruchshaltungen auszubalancieren.</p>
+
+
+      <div class="hero-side">
+        <aside class="hero-card">
+          <div class="meta-label">Perspektiven</div>
+          <div class="role-list">
+            <div class="role-item">
+              <strong>Als Führungskraft</strong>
+              <span>Praktische Umsetzung von Data- und AI-Initiativen in Organisationen — von Strategie über Skalierung bis zum Betrieb von Lösungen.</span>
+            </div>
+            <div class="role-item">
+              <strong>Als Berater und Coach</strong>
+              <span>Unterstützung von Führungskräften dabei, KI in ihrem jeweiligen Kontext einzuordnen und tragfähige Wege im Umgang damit zu finden.</span>
+            </div>
+            <div class="role-item">
+              <strong>In der Lehre</strong>
+              <span>Auseinandersetzung mit den ethischen und gesellschaftlichen Fragen von KI, insbesondere im Kontext von Responsible AI.</span>
+            </div>
+          </div>
+        </aside>
+
+        <aside class="quote-box">
+          <p>„KI wird nicht durch Technologie allein wirksam, sondern durch sondern durch Menschen, die KI-basierte Lösungen zieldienlich nutzen“</p>
+          <span class="muted">Fokus auf Wirkung, Führung und verantwortungsvolle Gestaltung.</span>
+        </aside>
+      </div>
+    </section>
+
+    <section id="themen">
+      <div class="section-head">
+        <h2>Woran ich arbeite</h2>
+        <p class="section-intro">Die folgenden Themen beschreiben die Denk- und Arbeitsfelder, mit denen ich mich in meinen verschiedenen Rollen beschäftige.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="mini-label">Organisation</div>
+          <h3>Organisation im Zeitalter von KI</h3>
+          <p>Warum KI-Transformation immer auch Organisationsentwicklung ist — und warum bei der strukturierten Etablierung von KI alle Wesenselemente einer Organisation berücksichtigt werden müssen.</p>
+        </article>
+
+        <article class="card">
+          <div class="mini-label">Führung</div>
+          <h3>KI als Führungsaufgabe</h3>
+          <p>Die KI-Transformation ist insbesondere eine Führungsaufgabe. Wirksamkeit entsteht durch Führung auf organisationaler Ebene, Team-Ebene und individueller Ebene.</p>
+        </article>
+
+        <article class="card">
+          <div class="mini-label">Responsible AI</div>
+          <h3>Responsible AI als Gestaltungsfrage</h3>
+          <p>Wie verantwortungsvoller KI-Einsatz konkret gestaltet werden kann — und nicht zum ethischen Feigenblatt wird.</p>
+        </article>
+
+        <article class="card">
+          <div class="mini-label">Wirkung</div>
+          <h3>Von Use Cases zu Wirksamkeit</h3>
+          <p>Warum viele AI-Initiativen keinen echten Impact erzeugen und wie eine bloße Aneinanderreihung von Experimenten vermieden werden kann.</p>
+        </article>
+
+        <article class="card">
+          <div class="mini-label">Agentic AI</div>
+          <h3>Agentic AI und Verantwortung</h3>
+          <p>Welche neuen Fragen autonome Systeme für Organisationen aufwerfen und wie die Arbeit der Zukunft aussehen kann — insbesondere in der Mensch-Maschine-Interaktion.</p>
+        </article>
+
+        <article class="card">
+          <div class="mini-label">Transformation</div>
+          <h3>Führung unter hoher Innovationsgeschwindigkeit</h3>
+          <p>Wie Führungskräfte im Tech-Umfeld mit Dynamik, Anspruch und Überforderung umgehen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="beitraege">
+      <div class="section-head">
+        <h2>Beiträge</h2>
+        <p class="section-intro">Ausgewählte Veröffentlichungen und Perspektiven.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="publication placeholder">
+          <span class="tag">Responsible AI</span>
+          <h3>Responsible Artificial Intelligence</h3>
+          <p>Artikel 1 aus MIT Sloan Management Review.</p>
+          <div class="meta">Artikel</div>
+          <a class="readmore" href="#">Link ergänzen →</a>
+        </article>
+
+        <article class="publication placeholder">
+          <span class="tag">Responsible AI</span>
+          <h3>Responsible Artificial Intelligence</h3>
+          <p>Artikel 2 aus MIT Sloan Management Review.</p>
+          <div class="meta">Artikel</div>
+          <a class="readmore" href="#">Link ergänzen →</a>
+        </article>
+
+        <article class="publication">
+          <span class="tag">KI und OE</span>
+          <h3>Zieldienliche KI-Integration</h3>
+          <p>Ein Interview mit Julia Andersch von Trigon Entwicklungsberatung zur Integration von KI bei gleichzeitiger Stärkung der Mitarbeitenden.</p>
+          <div class="meta">Interview</div>
+          <a class="readmore" href="https://www.transformieren.art/transfomagazin/2025/9/24/eine-zieldienliche-ki-integration-kann-dazu-fhren-dass-menschen-in-ihrer-arbeit-aufblhen" target="_blank" rel="noreferrer noopener">Beitrag öffnen →</a>
+        </article>
+
+        <article class="publication">
+          <span class="tag">KI-Skalierung</span>
+          <h3>Künstlicher Hype oder echter Mehrwert?</h3>
+          <p>Eine Darstellung eines umfassenden Ansatzes, der die KI-Skalierung zu einem organischen Veränderungsprozess macht, der sich selbst trägt.</p>
+          <div class="meta">Artikel</div>
+          <a class="readmore" href="https://live.handelsblatt.com/kuenstlicher-hype-oder-echter-mehrwert-wo-und-wie-ki-die-energiewende-unterstuetzen-kann/" target="_blank" rel="noreferrer noopener">Beitrag öffnen →</a>
+        </article>
+
+        <article class="publication">
+          <span class="tag">KI-Skalierung</span>
+          <h3>Kompass statt Chaos – Eine Navigationshilfe für die KI-Transformation</h3>
+          <p>Präsentation im Rahmen der Konferenz „KI als Akteur – Die neue Ära der Zusammenarbeit“ des Münchner Kreises (2025).</p>
+          <div class="meta">Präsentation</div>
+          <span class="readmore muted">Link kann ergänzt werden</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="ueber">
+      <div class="section-head">
+        <h2>Über mich</h2>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-text card">
+          <p>Ich arbeite an der Schnittstelle von KI, Führung und Organisationsentwicklung. In diesem dynamischen und spannenden Umfeld bleibt mir nichts anderes übrig als die Metazufriedenheit — ich bin damit zufrieden, dass ich nicht zufrieden bin. Es gibt unzählige relevante Fragestellungen, die bearbeitet werden müssen, und täglich kommen neue dazu.</p>
+
+          <p>Mich interessiert nicht nur, was technologisch möglich ist, sondern wie Organisationen KI so einsetzen, dass daraus echte Wirkung entsteht — in Entscheidungen, Strukturen und Zusammenarbeit.</p>
+
+          <div class="key-question">
+            <strong>Zentrale Frage</strong>
+            <span>Wie wird KI in Organisationen wirksam?</span>
+          </div>
+
+          <p>Nicht als isolierte Technologie, sondern als Teil eines Systems, das von Menschen gestaltet, geführt und verantwortet wird.</p>
+
+          <ul class="bullet-list">
+            <li><strong>Als Führungskraft:</strong> Als leitender Angestellter in einem Industrieunternehmen verantwortlich für KI und Daten</li>
+            <li><strong>Als Berater und Coach:</strong> Freiberufliche Begleitung von Führungskräften bei der Einordnung von KI und der Entwicklung tragfähiger Wege im Umgang damit.</li>
+            <li><strong>In der Lehre:</strong> Ausbildung von Master-Studenten und Führungskräften am Karlsruher Institut für Technologie und der der ESMT Berlin</li>
+          </ul>
+        </div>
+
+       <div>
+          <div class="photo-card">
+            <div class="photo-placeholder">
+              <div>
+                  <img src="Foto.jpg" alt="Dr. Rainer Hoffmann" class="profile-image" />
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <section id="gespraech">
+      <div class="section-head">
+        <h2>Gespräch</h2>
+      </div>
+
+      <div class="contact-panel">
+        <div>
+            <p class="section-intro">Wenn Sie sich mit ähnlichen Fragen beschäftigen oder diese Themen für Ihre Organisation relevant sind, freue ich mich über den Austausch.</p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="mailto:hallo@rainer-hoffmann.com" style="position:relative; z-index:10;">E-Mail schreiben</a>
+            <a class="btn" href="https://www.linkedin.com/in/rainer-hoffmann-ai/" target="_blank" rel="noreferrer noopener">LinkedIn ansehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Dr. Rainer Hoffmann · 2026</div>
+  </footer>
+</body>
+</html>
+
+
+
+
