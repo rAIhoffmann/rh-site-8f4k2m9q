@@ -92,6 +92,39 @@
       white-space: nowrap;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Language toggle button */
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1.5px solid var(--line);
+      background: var(--surface-strong);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .lang-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .lang-btn.active-en {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
     .nav-links {
       display: flex;
       align-items: center;
@@ -266,7 +299,7 @@
     .role-item strong { display: block; font-size: 0.97rem; margin-bottom: 4px; }
     .role-item span { font-size: 0.92rem; color: var(--muted); }
 
-    /* ── Quote (full-width dark band) ── */
+    /* ── Quote ── */
     .quote-section {
       background: var(--accent);
       padding: 80px 0;
@@ -381,9 +414,7 @@
       gap: 24px;
       align-items: start;
     }
-    .about-text {
-      padding: 32px;
-    }
+    .about-text { padding: 32px; }
     .about-text p { font-size: 1rem; color: #3a3c37; line-height: 1.75; }
     .about-text p + p { margin-top: 16px; }
 
@@ -566,15 +597,18 @@
   <header class="topbar" id="topbar">
     <div class="wrap nav">
       <a class="brand" href="#top">Dr. Rainer Hoffmann</a>
-      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav-links" id="nav-links" aria-label="Navigation">
-        <a href="#themen">Woran ich arbeite</a>
-        <a href="#beitraege">Beiträge</a>
-        <a href="#ueber">Über mich</a>
-        <a href="#gespraech">Gespräch</a>
-      </nav>
+      <div class="nav-right">
+        <button class="lang-btn" id="lang-btn" aria-label="Switch language">EN</button>
+        <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav-links" id="nav-links" aria-label="Navigation">
+          <a href="#themen" data-i18n="nav-themen">Woran ich arbeite</a>
+          <a href="#beitraege" data-i18n="nav-beitraege">Beiträge</a>
+          <a href="#ueber" data-i18n="nav-ueber">Über mich</a>
+          <a href="#gespraech" data-i18n="nav-gespraech">Gespräch</a>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -584,43 +618,43 @@
     <div class="wrap hero-wrap">
       <section class="hero">
         <div>
-          <div class="eyebrow reveal">Führung · Beratung · Lehre</div>
-          <h1 class="reveal d1">Künstliche Intelligenz in Wirkung bringen</h1>
-          <p class="lead reveal d2">Ich beschäftige mich mit den vielfältigen organisatorischen und gesellschaftlichen Chancen sowie Herausforderungen beim Einsatz von KI.</p>
-          <p class="lead reveal d3">Als Führungskraft, Berater und Lehrender arbeite ich an der Frage, wie Künstliche Intelligenz in Organisationen wirksam wird — jenseits von Hype oder rein technischer Einführung.</p>
-          <p class="lead reveal d4">Dabei gilt es, das Spannungsverhältnis aus Möglichkeiten, organisationellen Gegebenheiten und Anspruchshaltungen auszubalancieren.</p>
+          <div class="eyebrow reveal" data-i18n="hero-eyebrow">Führung · Beratung · Lehre</div>
+          <h1 class="reveal d1" data-i18n="hero-h1">Künstliche Intelligenz in Wirkung bringen</h1>
+          <p class="lead reveal d2" data-i18n="hero-lead1">Ich beschäftige mich mit den vielfältigen organisatorischen und gesellschaftlichen Chancen sowie Herausforderungen beim Einsatz von KI.</p>
+          <p class="lead reveal d3" data-i18n="hero-lead2">Als Führungskraft, Berater und Lehrender arbeite ich an der Frage, wie Künstliche Intelligenz in Organisationen wirksam wird — jenseits von Hype oder rein technischer Einführung.</p>
+          <p class="lead reveal d4" data-i18n="hero-lead3">Dabei gilt es, das Spannungsverhältnis aus Möglichkeiten, organisationellen Gegebenheiten und Anspruchshaltungen auszubalancieren.</p>
           <div class="cta-row reveal d5">
-            <a class="btn primary" href="#gespraech">Gespräch anfragen</a>
-            <a class="btn" href="#themen">Themen entdecken</a>
+            <a class="btn primary" href="#gespraech" data-i18n="hero-cta1">Gespräch anfragen</a>
+            <a class="btn" href="#themen" data-i18n="hero-cta2">Themen entdecken</a>
           </div>
         </div>
 
         <aside class="hero-card reveal d2">
-          <div class="meta-label">Perspektiven</div>
+          <div class="meta-label" data-i18n="hero-meta">Perspektiven</div>
           <div class="role-list">
             <div class="role-item">
-              <strong>Als Führungskraft</strong>
-              <span>Praktische Umsetzung von Data- und AI-Initiativen in Organisationen — von Strategie über Skalierung bis zum Betrieb von Lösungen.</span>
+              <strong data-i18n="role1-title">Als Führungskraft</strong>
+              <span data-i18n="role1-desc">Praktische Umsetzung von Data- und AI-Initiativen in Organisationen — von Strategie über Skalierung bis zum Betrieb von Lösungen.</span>
             </div>
             <div class="role-item">
-              <strong>Als Berater und Coach</strong>
-              <span>Unterstützung von Führungskräften dabei, KI in ihrem jeweiligen Kontext einzuordnen und tragfähige Wege im Umgang damit zu finden.</span>
+              <strong data-i18n="role2-title">Als Berater und Coach</strong>
+              <span data-i18n="role2-desc">Unterstützung von Führungskräften dabei, KI in ihrem jeweiligen Kontext einzuordnen und tragfähige Wege im Umgang damit zu finden.</span>
             </div>
             <div class="role-item">
-              <strong>Als Lehrender</strong>
-              <span>Auseinandersetzung mit den ethischen, gesellschaftlichen und organisatorischen Fragen von KI, insbesondere im Kontext von Responsible AI.</span>
+              <strong data-i18n="role3-title">Als Lehrender</strong>
+              <span data-i18n="role3-desc">Auseinandersetzung mit den ethischen, gesellschaftlichen und organisatorischen Fragen von KI, insbesondere im Kontext von Responsible AI.</span>
             </div>
           </div>
         </aside>
       </section>
     </div>
 
-    <!-- Quote (full-width dark band) -->
+    <!-- Quote -->
     <section class="quote-section">
       <div class="wrap">
         <div class="quote-content reveal">
-          <blockquote>KI wird nicht durch Technologie allein wirksam, sondern durch Menschen, die KI-basierte Lösungen zieldienlich nutzen</blockquote>
-          <p class="quote-meta">Fokus auf Wirkung, Führung und verantwortungsvolle Gestaltung</p>
+          <blockquote data-i18n="quote-text">KI wird nicht durch Technologie allein wirksam, sondern durch Menschen, die KI-basierte Lösungen zieldienlich nutzen</blockquote>
+          <p class="quote-meta" data-i18n="quote-meta">Fokus auf Wirkung, Führung und verantwortungsvolle Gestaltung</p>
         </div>
       </div>
     </section>
@@ -630,39 +664,39 @@
       <!-- Topics -->
       <section id="themen">
         <div class="section-head">
-          <h2 class="reveal">Woran ich arbeite</h2>
-          <p class="section-intro reveal d1">Die folgenden Themen beschreiben die Denk- und Arbeitsfelder, mit denen ich mich in meinen verschiedenen Rollen beschäftige.</p>
+          <h2 class="reveal" data-i18n="themen-h2">Woran ich arbeite</h2>
+          <p class="section-intro reveal d1" data-i18n="themen-intro">Die folgenden Themen beschreiben die Denk- und Arbeitsfelder, mit denen ich mich in meinen verschiedenen Rollen beschäftige.</p>
         </div>
         <div class="grid-3">
           <article class="card reveal d1">
-            <div class="mini-label">Organisation</div>
-            <h3>Organisation im Zeitalter von KI</h3>
-            <p>Warum KI-Transformation immer auch Organisationsentwicklung ist — und warum bei der strukturierten Etablierung von KI alle Wesenselemente einer Organisation berücksichtigt werden müssen.</p>
+            <div class="mini-label" data-i18n="c1-label">Organisation</div>
+            <h3 data-i18n="c1-h3">Organisation im Zeitalter von KI</h3>
+            <p data-i18n="c1-p">Warum KI-Transformation immer auch Organisationsentwicklung ist — und warum bei der strukturierten Etablierung von KI alle Wesenselemente einer Organisation berücksichtigt werden müssen.</p>
           </article>
           <article class="card reveal d2">
-            <div class="mini-label">Führung</div>
-            <h3>KI als Führungsaufgabe</h3>
-            <p>Die KI-Transformation ist insbesondere eine Führungsaufgabe. Wirksamkeit entsteht durch Führung auf organisationaler Ebene, Team-Ebene und individueller Ebene.</p>
+            <div class="mini-label" data-i18n="c2-label">Führung</div>
+            <h3 data-i18n="c2-h3">KI als Führungsaufgabe</h3>
+            <p data-i18n="c2-p">Die KI-Transformation ist insbesondere eine Führungsaufgabe. Wirksamkeit entsteht durch Führung auf organisationaler Ebene, Team-Ebene und individueller Ebene.</p>
           </article>
           <article class="card reveal d3">
-            <div class="mini-label">Responsible AI</div>
-            <h3>Responsible AI als Gestaltungsfrage</h3>
-            <p>Wie verantwortungsvoller KI-Einsatz konkret gestaltet werden kann — und nicht zum ethischen Feigenblatt wird.</p>
+            <div class="mini-label" data-i18n="c3-label">Responsible AI</div>
+            <h3 data-i18n="c3-h3">Responsible AI als Gestaltungsfrage</h3>
+            <p data-i18n="c3-p">Wie verantwortungsvoller KI-Einsatz konkret gestaltet werden kann — und nicht zum ethischen Feigenblatt wird.</p>
           </article>
           <article class="card reveal d4">
-            <div class="mini-label">Wirkung</div>
-            <h3>Von Use Cases zu Wirksamkeit</h3>
-            <p>Warum viele AI-Initiativen keinen echten Impact erzeugen und wie eine bloße Aneinanderreihung von Experimenten vermieden werden kann.</p>
+            <div class="mini-label" data-i18n="c4-label">Wirkung</div>
+            <h3 data-i18n="c4-h3">Von Use Cases zu Wirksamkeit</h3>
+            <p data-i18n="c4-p">Warum viele AI-Initiativen keinen echten Impact erzeugen und wie eine bloße Aneinanderreihung von Experimenten vermieden werden kann.</p>
           </article>
           <article class="card reveal d5">
-            <div class="mini-label">Agentic AI</div>
-            <h3>Agentic AI und Verantwortung</h3>
-            <p>Welche neuen Fragen autonome Systeme für Organisationen aufwerfen und wie die Arbeit der Zukunft aussehen kann — insbesondere in der Mensch-Maschine-Interaktion.</p>
+            <div class="mini-label" data-i18n="c5-label">Agentic AI</div>
+            <h3 data-i18n="c5-h3">Agentic AI und Verantwortung</h3>
+            <p data-i18n="c5-p">Welche neuen Fragen autonome Systeme für Organisationen aufwerfen und wie die Arbeit der Zukunft aussehen kann — insbesondere in der Mensch-Maschine-Interaktion.</p>
           </article>
           <article class="card reveal d6">
-            <div class="mini-label">Transformation</div>
-            <h3>Führung unter hoher Innovationsgeschwindigkeit</h3>
-            <p>Wie Führungskräfte im Tech-Umfeld mit Dynamik, Anspruch und Überforderung umgehen.</p>
+            <div class="mini-label" data-i18n="c6-label">Transformation</div>
+            <h3 data-i18n="c6-h3">Führung unter hoher Innovationsgeschwindigkeit</h3>
+            <p data-i18n="c6-p">Wie Führungskräfte im Tech-Umfeld mit Dynamik, Anspruch und Überforderung umgehen.</p>
           </article>
         </div>
       </section>
@@ -670,56 +704,56 @@
       <!-- Publications -->
       <section id="beitraege">
         <div class="section-head">
-          <h2 class="reveal">Beiträge</h2>
-          <p class="section-intro reveal d1">Ausgewählte Veröffentlichungen und Perspektiven.</p>
+          <h2 class="reveal" data-i18n="pubs-h2">Beiträge</h2>
+          <p class="section-intro reveal d1" data-i18n="pubs-intro">Ausgewählte Veröffentlichungen und Perspektiven.</p>
         </div>
         <div class="grid-2">
           <article class="publication reveal d1">
-            <span class="tag">KI & Leadership</span>
-            <h3>KI als Test für Führungsqualität</h3>
-            <p>Der Artikel argumentiert, dass KI Entscheidungslogiken, Rollen, Verantwortung und Autoritätsstrukturen in Organisationen tiefgreifend verändert — und damit zur Führungsfrage wird. Auf dieser Grundlage entwickelt er eine Landkarte wirksamen Führungshandelns, die KI nicht als bloßes Effizienzwerkzeug, sondern als Entwicklungsimpuls für zukunftsfähige Organisationen begreift.</p>
-            <div class="pub-meta">Working Paper</div>
-            <a class="readmore" href="mailto:hallo@rainer-hoffmann.com">Paper auf Anfrage →</a>
+            <span class="tag" data-i18n="p1-tag">KI & Leadership</span>
+            <h3 data-i18n="p1-h3">KI als Test für Führungsqualität</h3>
+            <p data-i18n="p1-p">Der Artikel argumentiert, dass KI Entscheidungslogiken, Rollen, Verantwortung und Autoritätsstrukturen in Organisationen tiefgreifend verändert — und damit zur Führungsfrage wird. Auf dieser Grundlage entwickelt er eine Landkarte wirksamen Führungshandelns, die KI nicht als bloßes Effizienzwerkzeug, sondern als Entwicklungsimpuls für zukunftsfähige Organisationen begreift.</p>
+            <div class="pub-meta" data-i18n="p1-meta">Working Paper</div>
+            <a class="readmore" href="mailto:hallo@rainer-hoffmann.com" data-i18n="p1-read">Paper auf Anfrage →</a>
           </article>
 
           <article class="publication reveal d2">
-            <span class="tag">KI und OE</span>
-            <h3>Zieldienliche KI-Integration</h3>
-            <p>Ein Interview mit Julia Andersch von Trigon Entwicklungsberatung zur Integration von KI bei gleichzeitiger Stärkung der Mitarbeitenden.</p>
-            <div class="pub-meta">Interview</div>
-            <a class="readmore" href="https://www.transformieren.art/transfomagazin/2025/9/24/eine-zieldienliche-ki-integration-kann-dazu-fhren-dass-menschen-in-ihrer-arbeit-aufblhen" target="_blank" rel="noreferrer noopener">Beitrag öffnen →</a>
+            <span class="tag" data-i18n="p2-tag">KI und OE</span>
+            <h3 data-i18n="p2-h3">Zieldienliche KI-Integration</h3>
+            <p data-i18n="p2-p">Ein Interview mit Julia Andersch von Trigon Entwicklungsberatung zur Integration von KI bei gleichzeitiger Stärkung der Mitarbeitenden.</p>
+            <div class="pub-meta" data-i18n="p2-meta">Interview</div>
+            <a class="readmore" href="https://www.transformieren.art/transfomagazin/2025/9/24/eine-zieldienliche-ki-integration-kann-dazu-fhren-dass-menschen-in-ihrer-arbeit-aufblhen" target="_blank" rel="noreferrer noopener" data-i18n="p2-read">Beitrag öffnen →</a>
           </article>
 
           <article class="publication reveal d3">
-            <span class="tag">Responsible AI</span>
-            <h3>Why Responsible Artificial Intelligence Must Address Workforce Impact</h3>
-            <p>Mitwirkung an einem Beitrag des MIT Sloan Management Reviews über Workforce Impact als blinden Fleck vieler Responsible-AI-Ansätze — und darüber, warum verantwortlicher KI-Einsatz immer auch eine Frage von Arbeitsgestaltung und Organisation ist.</p>
-            <div class="pub-meta">Artikel · MIT Sloan Management Review</div>
-            <a class="readmore" href="https://sloanreview.mit.edu/article/beyond-the-model-why-responsible-ai-must-address-workforce-impact/">Beitrag öffnen →</a>
+            <span class="tag" data-i18n="p3-tag">Responsible AI</span>
+            <h3 data-i18n="p3-h3">Why Responsible Artificial Intelligence Must Address Workforce Impact</h3>
+            <p data-i18n="p3-p">Mitwirkung an einem Beitrag des MIT Sloan Management Reviews über Workforce Impact als blinden Fleck vieler Responsible-AI-Ansätze — und darüber, warum verantwortlicher KI-Einsatz immer auch eine Frage von Arbeitsgestaltung und Organisation ist.</p>
+            <div class="pub-meta" data-i18n="p3-meta">Artikel · MIT Sloan Management Review</div>
+            <a class="readmore" href="https://sloanreview.mit.edu/article/beyond-the-model-why-responsible-ai-must-address-workforce-impact/" data-i18n="p3-read">Beitrag öffnen →</a>
           </article>
 
           <article class="publication reveal d4">
-            <span class="tag">Responsible AI</span>
-            <h3>Seriousness About Responsible Artificial Intelligence</h3>
-            <p>Beitrag für das MIT Sloan Management Review zur globalen Responsible-AI-Governance. Mein Impuls: Weniger die Prinzipien selbst als vielmehr ihre Übersetzung in Prozesse, Gremien und Organisationskultur entscheidet darüber, ob Responsible AI in Unternehmen tatsächlich wirksam wird.</p>
-            <div class="pub-meta">Artikel · MIT Sloan Management Review</div>
-            <a class="readmore" href="https://sloanreview.mit.edu/article/a-fragmented-landscape-is-no-excuse-for-global-companies-serious-about-responsible-ai/">Beitrag öffnen →</a>
+            <span class="tag" data-i18n="p4-tag">Responsible AI</span>
+            <h3 data-i18n="p4-h3">Seriousness About Responsible Artificial Intelligence</h3>
+            <p data-i18n="p4-p">Beitrag für das MIT Sloan Management Review zur globalen Responsible-AI-Governance. Mein Impuls: Weniger die Prinzipien selbst als vielmehr ihre Übersetzung in Prozesse, Gremien und Organisationskultur entscheidet darüber, ob Responsible AI in Unternehmen tatsächlich wirksam wird.</p>
+            <div class="pub-meta" data-i18n="p4-meta">Artikel · MIT Sloan Management Review</div>
+            <a class="readmore" href="https://sloanreview.mit.edu/article/a-fragmented-landscape-is-no-excuse-for-global-companies-serious-about-responsible-ai/" data-i18n="p4-read">Beitrag öffnen →</a>
           </article>
 
           <article class="publication reveal d5">
-            <span class="tag">KI-Skalierung</span>
-            <h3>Künstlicher Hype oder echter Mehrwert?</h3>
-            <p>Eine Darstellung eines umfassenden Ansatzes, der die KI-Skalierung zu einem organischen Veränderungsprozess macht, der sich selbst trägt.</p>
-            <div class="pub-meta">Artikel · Handelsblatt</div>
-            <a class="readmore" href="https://live.handelsblatt.com/kuenstlicher-hype-oder-echter-mehrwert-wo-und-wie-ki-die-energiewende-unterstuetzen-kann/" target="_blank" rel="noreferrer noopener">Beitrag öffnen →</a>
+            <span class="tag" data-i18n="p5-tag">KI-Skalierung</span>
+            <h3 data-i18n="p5-h3">Künstlicher Hype oder echter Mehrwert?</h3>
+            <p data-i18n="p5-p">Eine Darstellung eines umfassenden Ansatzes, der die KI-Skalierung zu einem organischen Veränderungsprozess macht, der sich selbst trägt.</p>
+            <div class="pub-meta" data-i18n="p5-meta">Artikel · Handelsblatt</div>
+            <a class="readmore" href="https://live.handelsblatt.com/kuenstlicher-hype-oder-echter-mehrwert-wo-und-wie-ki-die-energiewende-unterstuetzen-kann/" target="_blank" rel="noreferrer noopener" data-i18n="p5-read">Beitrag öffnen →</a>
           </article>
 
           <article class="publication reveal d6">
-            <span class="tag">KI-Skalierung</span>
-            <h3>Kompass statt Chaos – Eine Navigationshilfe für die KI-Transformation</h3>
-            <p>Präsentation im Rahmen der Konferenz „KI als Akteur – Die neue Ära der Zusammenarbeit" des Münchner Kreises (2025).</p>
-            <div class="pub-meta">Präsentation · Münchner Kreis</div>
-            <a class="readmore" href="mailto:hallo@rainer-hoffmann.com">Präsentation auf Anfrage →</a>
+            <span class="tag" data-i18n="p6-tag">KI-Skalierung</span>
+            <h3 data-i18n="p6-h3">Kompass statt Chaos – Eine Navigationshilfe für die KI-Transformation</h3>
+            <p data-i18n="p6-p">Präsentation im Rahmen der Konferenz „KI als Akteur – Die neue Ära der Zusammenarbeit" des Münchner Kreises (2025).</p>
+            <div class="pub-meta" data-i18n="p6-meta">Präsentation · Münchner Kreis</div>
+            <a class="readmore" href="mailto:hallo@rainer-hoffmann.com" data-i18n="p6-read">Präsentation auf Anfrage →</a>
           </article>
         </div>
       </section>
@@ -727,21 +761,30 @@
       <!-- About -->
       <section id="ueber">
         <div class="section-head">
-          <h2 class="reveal">Über mich</h2>
+          <h2 class="reveal" data-i18n="ueber-h2">Über mich</h2>
         </div>
         <div class="about-layout">
           <div class="about-text card reveal">
-            <p>Ich arbeite an der Schnittstelle von KI, Führung und Organisationsentwicklung. In diesem dynamischen und spannenden Umfeld bleibt mir nichts anderes übrig als die Metazufriedenheit — ich bin damit zufrieden, dass ich nicht zufrieden bin. Es gibt unzählige relevante Fragestellungen, die bearbeitet werden müssen, und täglich kommen neue dazu.</p>
-            <p>Mich interessiert nicht nur, was technologisch möglich ist, sondern wie Organisationen KI so einsetzen, dass daraus echte Wirkung entsteht — in Entscheidungen, Strukturen und Zusammenarbeit.</p>
+            <p data-i18n="about-p1">Ich arbeite an der Schnittstelle von KI, Führung und Organisationsentwicklung. In diesem dynamischen und spannenden Umfeld bleibt mir nichts anderes übrig als die Metazufriedenheit — ich bin damit zufrieden, dass ich nicht zufrieden bin. Es gibt unzählige relevante Fragestellungen, die bearbeitet werden müssen, und täglich kommen neue dazu.</p>
+            <p data-i18n="about-p2">Mich interessiert nicht nur, was technologisch möglich ist, sondern wie Organisationen KI so einsetzen, dass daraus echte Wirkung entsteht — in Entscheidungen, Strukturen und Zusammenarbeit.</p>
             <div class="key-question">
-              <strong>Zentrale Frage</strong>
-              <span>Wie wird KI in Organisationen wirksam?</span>
+              <strong data-i18n="about-kq-label">Zentrale Frage</strong>
+              <span data-i18n="about-kq-text">Wie wird KI in Organisationen wirksam?</span>
             </div>
-            <p>Nicht als isolierte Technologie, sondern als Teil eines Systems, das von Menschen gestaltet, geführt und verantwortet wird.</p>
+            <p data-i18n="about-p3">Nicht als isolierte Technologie, sondern als Teil eines Systems, das von Menschen gestaltet, geführt und verantwortet wird.</p>
             <ul class="bullet-list">
-              <li><strong>Als Führungskraft:</strong> Als leitender Angestellter in einem Industrieunternehmen verantwortlich für KI und Daten</li>
-              <li><strong>Als Berater und Coach:</strong> Freiberufliche Begleitung von Führungskräften bei der Einordnung von KI und der Entwicklung tragfähiger Wege im Umgang damit.</li>
-              <li><strong>Als Lehrbeauftragter:</strong> Ausbildung von Master-Studenten und Führungskräften an Universitäten</li>
+              <li>
+                <strong data-i18n="about-r1-title">Als Führungskraft:</strong>
+                <span data-i18n="about-r1-text">Als leitender Angestellter in einem Industrieunternehmen verantwortlich für KI und Daten</span>
+              </li>
+              <li>
+                <strong data-i18n="about-r2-title">Als Berater und Coach:</strong>
+                <span data-i18n="about-r2-text">Freiberufliche Begleitung von Führungskräften bei der Einordnung von KI und der Entwicklung tragfähiger Wege im Umgang damit.</span>
+              </li>
+              <li>
+                <strong data-i18n="about-r3-title">Als Lehrbeauftragter:</strong>
+                <span data-i18n="about-r3-text">Ausbildung von Master-Studenten und Führungskräften an Universitäten</span>
+              </li>
             </ul>
           </div>
 
@@ -756,16 +799,16 @@
       <!-- Contact -->
       <section id="gespraech">
         <div class="section-head">
-          <h2 class="reveal">Gespräch</h2>
+          <h2 class="reveal" data-i18n="gespraech-h2">Gespräch</h2>
         </div>
         <div class="contact-panel reveal">
           <div>
-            <p class="contact-copy">Wenn Sie sich mit ähnlichen Fragen beschäftigen oder diese Themen für Ihre Organisation relevant sind, freue ich mich über den Austausch.</p>
+            <p class="contact-copy" data-i18n="contact-copy">Wenn Sie sich mit ähnlichen Fragen beschäftigen oder diese Themen für Ihre Organisation relevant sind, freue ich mich über den Austausch.</p>
             <div class="contact-actions">
               <a class="contact-link" href="mailto:hallo@rainer-hoffmann.com">
                 <div class="contact-link-icon">✉</div>
                 <div>
-                  <strong>E-Mail schreiben</strong>
+                  <strong data-i18n="contact-email-title">E-Mail schreiben</strong>
                   <span>hallo@rainer-hoffmann.com</span>
                 </div>
               </a>
@@ -773,15 +816,15 @@
                 <div class="contact-link-icon">in</div>
                 <div>
                   <strong>LinkedIn</strong>
-                  <span>Profil ansehen &amp; vernetzen</span>
+                  <span data-i18n="contact-li-span">Profil ansehen &amp; vernetzen</span>
                 </div>
               </a>
             </div>
           </div>
           <div class="contact-aside">
-            <h3>Themen für ein Gespräch</h3>
-            <p>Beratung und Coaching, Vorträge und Keynotes, Lehraufträge und Workshops sowie gemeinsame Publikationen.</p>
-            <div class="avail">Offen für Anfragen</div>
+            <h3 data-i18n="contact-aside-h3">Themen für ein Gespräch</h3>
+            <p data-i18n="contact-aside-p">Beratung und Coaching, Vorträge und Keynotes, Lehraufträge und Workshops sowie gemeinsame Publikationen.</p>
+            <div class="avail" data-i18n="contact-avail">Offen für Anfragen</div>
           </div>
         </div>
       </section>
@@ -793,16 +836,175 @@
     <div class="wrap footer-inner">
       <span>Dr. Rainer Hoffmann · 2026</span>
       <div class="footer-links">
-        <a href="mailto:hallo@rainer-hoffmann.com">Kontakt</a>
+        <a href="mailto:hallo@rainer-hoffmann.com" data-i18n="footer-contact">Kontakt</a>
         <a href="https://www.linkedin.com/in/rainer-hoffmann-ai/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html" data-i18n="footer-impressum">Impressum</a>
+        <a href="datenschutz.html" data-i18n="footer-datenschutz">Datenschutz</a>
       </div>
     </div>
   </footer>
 
   <script>
-    // Hamburger menu
+    // ── Translations ──────────────────────────────────────────────
+    const t = {
+      de: {
+        'nav-themen':        'Woran ich arbeite',
+        'nav-beitraege':     'Beiträge',
+        'nav-ueber':         'Über mich',
+        'nav-gespraech':     'Gespräch',
+
+        'hero-eyebrow':      'Führung · Beratung · Lehre',
+        'hero-h1':           'Künstliche Intelligenz in Wirkung bringen',
+        'hero-lead1':        'Ich beschäftige mich mit den vielfältigen organisatorischen und gesellschaftlichen Chancen sowie Herausforderungen beim Einsatz von KI.',
+        'hero-lead2':        'Als Führungskraft, Berater und Lehrender arbeite ich an der Frage, wie Künstliche Intelligenz in Organisationen wirksam wird — jenseits von Hype oder rein technischer Einführung.',
+        'hero-lead3':        'Dabei gilt es, das Spannungsverhältnis aus Möglichkeiten, organisationellen Gegebenheiten und Anspruchshaltungen auszubalancieren.',
+        'hero-cta1':         'Gespräch anfragen',
+        'hero-cta2':         'Themen entdecken',
+        'hero-meta':         'Perspektiven',
+        'role1-title':       'Als Führungskraft',
+        'role1-desc':        'Praktische Umsetzung von Data- und AI-Initiativen in Organisationen — von Strategie über Skalierung bis zum Betrieb von Lösungen.',
+        'role2-title':       'Als Berater und Coach',
+        'role2-desc':        'Unterstützung von Führungskräften dabei, KI in ihrem jeweiligen Kontext einzuordnen und tragfähige Wege im Umgang damit zu finden.',
+        'role3-title':       'Als Lehrender',
+        'role3-desc':        'Auseinandersetzung mit den ethischen, gesellschaftlichen und organisatorischen Fragen von KI, insbesondere im Kontext von Responsible AI.',
+
+        'quote-text':        'KI wird nicht durch Technologie allein wirksam, sondern durch Menschen, die KI-basierte Lösungen zieldienlich nutzen',
+        'quote-meta':        'Fokus auf Wirkung, Führung und verantwortungsvolle Gestaltung',
+
+        'themen-h2':         'Woran ich arbeite',
+        'themen-intro':      'Die folgenden Themen beschreiben die Denk- und Arbeitsfelder, mit denen ich mich in meinen verschiedenen Rollen beschäftige.',
+        'c1-label': 'Organisation',   'c1-h3': 'Organisation im Zeitalter von KI',             'c1-p': 'Warum KI-Transformation immer auch Organisationsentwicklung ist — und warum bei der strukturierten Etablierung von KI alle Wesenselemente einer Organisation berücksichtigt werden müssen.',
+        'c2-label': 'Führung',        'c2-h3': 'KI als Führungsaufgabe',                       'c2-p': 'Die KI-Transformation ist insbesondere eine Führungsaufgabe. Wirksamkeit entsteht durch Führung auf organisationaler Ebene, Team-Ebene und individueller Ebene.',
+        'c3-label': 'Responsible AI', 'c3-h3': 'Responsible AI als Gestaltungsfrage',          'c3-p': 'Wie verantwortungsvoller KI-Einsatz konkret gestaltet werden kann — und nicht zum ethischen Feigenblatt wird.',
+        'c4-label': 'Wirkung',        'c4-h3': 'Von Use Cases zu Wirksamkeit',                 'c4-p': 'Warum viele AI-Initiativen keinen echten Impact erzeugen und wie eine bloße Aneinanderreihung von Experimenten vermieden werden kann.',
+        'c5-label': 'Agentic AI',     'c5-h3': 'Agentic AI und Verantwortung',                 'c5-p': 'Welche neuen Fragen autonome Systeme für Organisationen aufwerfen und wie die Arbeit der Zukunft aussehen kann — insbesondere in der Mensch-Maschine-Interaktion.',
+        'c6-label': 'Transformation', 'c6-h3': 'Führung unter hoher Innovationsgeschwindigkeit','c6-p': 'Wie Führungskräfte im Tech-Umfeld mit Dynamik, Anspruch und Überforderung umgehen.',
+
+        'pubs-h2':    'Beiträge',
+        'pubs-intro': 'Ausgewählte Veröffentlichungen und Perspektiven.',
+        'p1-tag': 'KI & Leadership', 'p1-h3': 'KI als Test für Führungsqualität',              'p1-p': 'Der Artikel argumentiert, dass KI Entscheidungslogiken, Rollen, Verantwortung und Autoritätsstrukturen in Organisationen tiefgreifend verändert — und damit zur Führungsfrage wird. Auf dieser Grundlage entwickelt er eine Landkarte wirksamen Führungshandelns, die KI nicht als bloßes Effizienzwerkzeug, sondern als Entwicklungsimpuls für zukunftsfähige Organisationen begreift.', 'p1-meta': 'Working Paper', 'p1-read': 'Paper auf Anfrage →',
+        'p2-tag': 'KI und OE',       'p2-h3': 'Zieldienliche KI-Integration',                  'p2-p': 'Ein Interview mit Julia Andersch von Trigon Entwicklungsberatung zur Integration von KI bei gleichzeitiger Stärkung der Mitarbeitenden.', 'p2-meta': 'Interview', 'p2-read': 'Beitrag öffnen →',
+        'p3-tag': 'Responsible AI',  'p3-h3': 'Why Responsible Artificial Intelligence Must Address Workforce Impact', 'p3-p': 'Mitwirkung an einem Beitrag des MIT Sloan Management Reviews über Workforce Impact als blinden Fleck vieler Responsible-AI-Ansätze — und darüber, warum verantwortlicher KI-Einsatz immer auch eine Frage von Arbeitsgestaltung und Organisation ist.', 'p3-meta': 'Artikel · MIT Sloan Management Review', 'p3-read': 'Beitrag öffnen →',
+        'p4-tag': 'Responsible AI',  'p4-h3': 'Seriousness About Responsible Artificial Intelligence', 'p4-p': 'Beitrag für das MIT Sloan Management Review zur globalen Responsible-AI-Governance. Mein Impuls: Weniger die Prinzipien selbst als vielmehr ihre Übersetzung in Prozesse, Gremien und Organisationskultur entscheidet darüber, ob Responsible AI in Unternehmen tatsächlich wirksam wird.', 'p4-meta': 'Artikel · MIT Sloan Management Review', 'p4-read': 'Beitrag öffnen →',
+        'p5-tag': 'KI-Skalierung',   'p5-h3': 'Künstlicher Hype oder echter Mehrwert?',        'p5-p': 'Eine Darstellung eines umfassenden Ansatzes, der die KI-Skalierung zu einem organischen Veränderungsprozess macht, der sich selbst trägt.', 'p5-meta': 'Artikel · Handelsblatt', 'p5-read': 'Beitrag öffnen →',
+        'p6-tag': 'KI-Skalierung',   'p6-h3': 'Kompass statt Chaos – Eine Navigationshilfe für die KI-Transformation', 'p6-p': 'Präsentation im Rahmen der Konferenz „KI als Akteur – Die neue Ära der Zusammenarbeit" des Münchner Kreises (2025).', 'p6-meta': 'Präsentation · Münchner Kreis', 'p6-read': 'Präsentation auf Anfrage →',
+
+        'ueber-h2':       'Über mich',
+        'about-p1':       'Ich arbeite an der Schnittstelle von KI, Führung und Organisationsentwicklung. In diesem dynamischen und spannenden Umfeld bleibt mir nichts anderes übrig als die Metazufriedenheit — ich bin damit zufrieden, dass ich nicht zufrieden bin. Es gibt unzählige relevante Fragestellungen, die bearbeitet werden müssen, und täglich kommen neue dazu.',
+        'about-p2':       'Mich interessiert nicht nur, was technologisch möglich ist, sondern wie Organisationen KI so einsetzen, dass daraus echte Wirkung entsteht — in Entscheidungen, Strukturen und Zusammenarbeit.',
+        'about-kq-label': 'Zentrale Frage',
+        'about-kq-text':  'Wie wird KI in Organisationen wirksam?',
+        'about-p3':       'Nicht als isolierte Technologie, sondern als Teil eines Systems, das von Menschen gestaltet, geführt und verantwortet wird.',
+        'about-r1-title': 'Als Führungskraft:',     'about-r1-text': 'Als leitender Angestellter in einem Industrieunternehmen verantwortlich für KI und Daten',
+        'about-r2-title': 'Als Berater und Coach:', 'about-r2-text': 'Freiberufliche Begleitung von Führungskräften bei der Einordnung von KI und der Entwicklung tragfähiger Wege im Umgang damit.',
+        'about-r3-title': 'Als Lehrbeauftragter:',  'about-r3-text': 'Ausbildung von Master-Studenten und Führungskräften an Universitäten',
+
+        'gespraech-h2':      'Gespräch',
+        'contact-copy':      'Wenn Sie sich mit ähnlichen Fragen beschäftigen oder diese Themen für Ihre Organisation relevant sind, freue ich mich über den Austausch.',
+        'contact-email-title':'E-Mail schreiben',
+        'contact-li-span':   'Profil ansehen & vernetzen',
+        'contact-aside-h3':  'Themen für ein Gespräch',
+        'contact-aside-p':   'Beratung und Coaching, Vorträge und Keynotes, Lehraufträge und Workshops sowie gemeinsame Publikationen.',
+        'contact-avail':     'Offen für Anfragen',
+
+        'footer-contact':    'Kontakt',
+        'footer-impressum':  'Impressum',
+        'footer-datenschutz':'Datenschutz',
+      },
+      en: {
+        'nav-themen':        'What I Work On',
+        'nav-beitraege':     'Publications',
+        'nav-ueber':         'About',
+        'nav-gespraech':     'Get in Touch',
+
+        'hero-eyebrow':      'Leadership · Consulting · Teaching',
+        'hero-h1':           'Bringing Artificial Intelligence to Impact',
+        'hero-lead1':        'I explore the diverse organizational and societal opportunities and challenges that arise from the use of AI.',
+        'hero-lead2':        'As a leader, consultant, and educator, I work on the question of how Artificial Intelligence becomes effective in organizations — beyond hype or purely technical implementation.',
+        'hero-lead3':        'This requires balancing the tensions between possibilities, organizational realities, and the expectations of various stakeholders.',
+        'hero-cta1':         'Request a Conversation',
+        'hero-cta2':         'Explore Topics',
+        'hero-meta':         'Perspectives',
+        'role1-title':       'As a Leader',
+        'role1-desc':        'Practical implementation of data and AI initiatives in organizations — from strategy and scaling through to operating solutions.',
+        'role2-title':       'As a Consultant and Coach',
+        'role2-desc':        'Supporting leaders in contextualizing AI within their specific environment and finding sustainable approaches for working with it.',
+        'role3-title':       'As an Educator',
+        'role3-desc':        'Engaging with the ethical, societal, and organizational questions of AI, with a particular focus on Responsible AI.',
+
+        'quote-text':        'AI does not become effective through technology alone, but through people who use AI-based solutions in a purposeful way',
+        'quote-meta':        'Focus on impact, leadership, and responsible design',
+
+        'themen-h2':         'What I Work On',
+        'themen-intro':      'The following topics describe the areas of thought and work I engage with across my different roles.',
+        'c1-label': 'Organization',   'c1-h3': 'Organization in the Age of AI',                'c1-p': 'Why AI transformation is always also organizational development — and why structurally embedding AI requires considering all essential elements of an organization.',
+        'c2-label': 'Leadership',     'c2-h3': 'AI as a Leadership Challenge',                  'c2-p': 'The AI transformation is above all a leadership challenge. Effectiveness emerges through leadership at the organizational, team, and individual levels.',
+        'c3-label': 'Responsible AI', 'c3-h3': 'Responsible AI as a Design Question',          'c3-p': 'How responsible AI use can be concretely shaped — and prevented from becoming a mere ethical fig leaf.',
+        'c4-label': 'Impact',         'c4-h3': 'From Use Cases to Real Impact',                 'c4-p': 'Why many AI initiatives fail to generate genuine impact, and how to avoid a mere sequence of disconnected experiments.',
+        'c5-label': 'Agentic AI',     'c5-h3': 'Agentic AI and Responsibility',                 'c5-p': 'What new questions autonomous systems raise for organizations, and what the future of work might look like — particularly in human-machine interaction.',
+        'c6-label': 'Transformation', 'c6-h3': 'Leadership at High Speed of Innovation',        'c6-p': 'How leaders in technology environments navigate dynamics, pressure, and overwhelm.',
+
+        'pubs-h2':    'Publications',
+        'pubs-intro': 'Selected publications and perspectives.',
+        'p1-tag': 'AI & Leadership', 'p1-h3': 'AI as a Test of Leadership Quality',            'p1-p': 'The paper argues that AI profoundly transforms decision-making logic, roles, responsibilities, and authority structures in organizations — making it a leadership question. On this basis, it develops a map of effective leadership that treats AI not as a mere efficiency tool, but as a catalyst for building future-ready organizations.', 'p1-meta': 'Working Paper', 'p1-read': 'Paper on request →',
+        'p2-tag': 'AI & OD',         'p2-h3': 'Purposeful AI Integration',                     'p2-p': 'An interview with Julia Andersch from Trigon Entwicklungsberatung on integrating AI while simultaneously strengthening employees.', 'p2-meta': 'Interview', 'p2-read': 'Open article →',
+        'p3-tag': 'Responsible AI',  'p3-h3': 'Why Responsible Artificial Intelligence Must Address Workforce Impact', 'p3-p': 'A contribution to the MIT Sloan Management Review on workforce impact as a blind spot in many Responsible AI approaches — and why responsible AI use is always also a question of work design and organizational structure.', 'p3-meta': 'Article · MIT Sloan Management Review', 'p3-read': 'Open article →',
+        'p4-tag': 'Responsible AI',  'p4-h3': 'Seriousness About Responsible Artificial Intelligence', 'p4-p': 'A contribution to the MIT Sloan Management Review on global Responsible AI governance. My key point: Less the principles themselves, but their translation into processes, governance bodies, and organizational culture determines whether Responsible AI actually takes hold in companies.', 'p4-meta': 'Article · MIT Sloan Management Review', 'p4-read': 'Open article →',
+        'p5-tag': 'AI Scaling',      'p5-h3': 'Artificial Hype or Real Value?',                'p5-p': 'A presentation of a comprehensive approach that turns AI scaling into an organic change process that sustains itself.', 'p5-meta': 'Article · Handelsblatt', 'p5-read': 'Open article →',
+        'p6-tag': 'AI Scaling',      'p6-h3': 'Compass Instead of Chaos – A Navigation Guide for AI Transformation', 'p6-p': 'Presentation at the conference "AI as Actor – The New Era of Collaboration" organized by the Münchner Kreis (2025).', 'p6-meta': 'Presentation · Münchner Kreis', 'p6-read': 'Presentation on request →',
+
+        'ueber-h2':       'About Me',
+        'about-p1':       'I work at the intersection of AI, leadership, and organizational development. In this dynamic and exciting environment, I have no choice but to embrace meta-satisfaction — I am satisfied with not being satisfied. There are countless relevant questions that need to be addressed, and new ones emerge every day.',
+        'about-p2':       'I am not only interested in what is technologically possible, but in how organizations deploy AI in ways that generate genuine impact — in decisions, structures, and collaboration.',
+        'about-kq-label': 'Central Question',
+        'about-kq-text':  'How does AI become effective in organizations?',
+        'about-p3':       'Not as an isolated technology, but as part of a system that is shaped, led, and taken responsibility for by people.',
+        'about-r1-title': 'As a Leader:',           'about-r1-text': 'Senior executive in an industrial company responsible for AI and data',
+        'about-r2-title': 'As a Consultant and Coach:', 'about-r2-text': 'Independent coaching of executives in contextualizing AI and developing sustainable approaches for working with it.',
+        'about-r3-title': 'As a Lecturer:',         'about-r3-text': 'Teaching master\'s students and executives at universities',
+
+        'gespraech-h2':       'Get in Touch',
+        'contact-copy':       'If you are working on similar questions or if these topics are relevant for your organization, I welcome the conversation.',
+        'contact-email-title':'Send an Email',
+        'contact-li-span':    'View profile & connect',
+        'contact-aside-h3':   'Topics for a Conversation',
+        'contact-aside-p':    'Consulting and coaching, talks and keynotes, teaching engagements and workshops, as well as joint publications.',
+        'contact-avail':      'Open for Inquiries',
+
+        'footer-contact':    'Contact',
+        'footer-impressum':  'Legal Notice',
+        'footer-datenschutz':'Privacy Policy',
+      }
+    };
+
+    // ── Language toggle ───────────────────────────────────────────
+    let lang = 'de';
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[l][key] !== undefined) el.textContent = t[l][key];
+      });
+      const btn = document.getElementById('lang-btn');
+      btn.textContent = l === 'de' ? 'EN' : 'DE';
+      btn.classList.toggle('active-en', l === 'en');
+      document.title = l === 'de'
+        ? 'KI verantwortungsvoll in Wirkung bringen | Dr. Rainer Hoffmann'
+        : 'Bringing AI to Impact Responsibly | Dr. Rainer Hoffmann';
+    }
+
+    document.getElementById('lang-btn').addEventListener('click', () => {
+      setLang(lang === 'de' ? 'en' : 'de');
+    });
+
+    // Restore saved language on load
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang === 'en') setLang('en');
+
+    // ── Hamburger menu ────────────────────────────────────────────
     const hamburger = document.getElementById('hamburger');
     const navLinks  = document.getElementById('nav-links');
     hamburger.addEventListener('click', () => {
@@ -816,18 +1018,18 @@
       hamburger.setAttribute('aria-expanded', false);
     }));
 
-    // Navbar shadow on scroll
+    // ── Navbar shadow on scroll ───────────────────────────────────
     const topbar = document.getElementById('topbar');
     window.addEventListener('scroll', () => topbar.classList.toggle('scrolled', scrollY > 10), { passive: true });
 
-    // Scroll-reveal
+    // ── Scroll-reveal ─────────────────────────────────────────────
     const revealObs = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } }),
       { threshold: 0.1 }
     );
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-    // Active nav link
+    // ── Active nav link ───────────────────────────────────────────
     const sections   = document.querySelectorAll('section[id]');
     const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
     const activeObs  = new IntersectionObserver(

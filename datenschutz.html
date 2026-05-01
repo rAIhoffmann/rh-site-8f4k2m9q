@@ -9,151 +9,102 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:             #f7f6f3;
-      --surface:        rgba(255,255,255,0.88);
-      --surface-strong: #ffffff;
-      --text:           #1a1c18;
-      --muted:          #5e6159;
-      --line:           #dedad4;
-      --accent:         #2f4f4f;
-      --accent-soft:    #e8efee;
-      --shadow:         0 12px 32px rgba(20,24,20,0.09);
-      --radius:         20px;
-      --radius-sm:      12px;
-      --max:            760px;
-      --ease:           cubic-bezier(0.22, 1, 0.36, 1);
+      --bg:          #f7f6f3;
+      --surface:     rgba(255,255,255,0.88);
+      --text:        #1a1c18;
+      --muted:       #5e6159;
+      --line:        #dedad4;
+      --accent:      #2f4f4f;
+      --accent-dark: #1e3535;
+      --accent-soft: #e8efee;
+      --shadow:      0 12px 32px rgba(20,24,20,0.09);
+      --radius:      20px;
+      --radius-sm:   12px;
+      --max:         760px;
+      --ease:        cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-      color: var(--text);
-      line-height: 1.65;
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
+      color: var(--text); line-height: 1.65;
+      background: var(--bg); -webkit-font-smoothing: antialiased;
     }
-
     a { color: inherit; text-decoration: none; }
 
-    .wrap {
-      width: min(var(--max), calc(100% - 48px));
-      margin: 0 auto;
-    }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
 
-    /* Nav */
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
       background: rgba(247,246,243,0.88);
       border-bottom: 1px solid rgba(222,218,212,0.7);
     }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 60px;
-    }
-    .brand {
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
+    .nav { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+    .brand { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+
     .back-link {
-      font-size: 0.9rem;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
+      font-size: 0.9rem; color: var(--muted);
+      display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;
     }
     .back-link:hover { color: var(--text); }
 
-    /* Content */
-    main {
-      padding: 64px 0 100px;
+    .lang-btn {
+      padding: 5px 12px; border-radius: 999px;
+      border: 1.5px solid var(--line); background: white;
+      color: var(--muted); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.06em; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
     }
+    .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .lang-btn.active-en { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 
-    .page-header {
-      margin-bottom: 40px;
-    }
+    main { padding: 64px 0 100px; }
+    .page-header { margin-bottom: 40px; }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--accent);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--accent); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;
     }
     .eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 24px; height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
+      content: ''; display: inline-block; width: 24px; height: 2px;
+      background: var(--accent); border-radius: 2px;
     }
-
     h1 {
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+      font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
     }
 
     .content-card {
       background: var(--surface);
       border: 1px solid rgba(255,255,255,0.8);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      padding: 40px;
+      box-shadow: var(--shadow); border-radius: var(--radius); padding: 40px;
     }
 
     h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin: 36px 0 10px;
+      font-size: 0.82rem; font-weight: 700; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.06em; margin: 36px 0 10px;
     }
     h2:first-child { margin-top: 0; }
 
-    p {
-      font-size: 0.97rem;
-      color: #3a3c37;
-      line-height: 1.75;
-      margin-bottom: 8px;
-    }
+    p { font-size: 0.97rem; color: #3a3c37; line-height: 1.75; margin-bottom: 8px; }
     p:last-child { margin-bottom: 0; }
+    .email-link { color: var(--accent); font-weight: 600; }
+    .ext-link   { color: var(--accent); font-weight: 600; }
 
     .note {
-      margin-top: 36px;
-      padding: 16px 20px;
-      background: var(--accent-soft);
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.65;
+      margin-top: 36px; padding: 16px 20px;
+      background: var(--accent-soft); border-radius: var(--radius-sm);
+      font-size: 0.9rem; color: var(--muted); line-height: 1.65;
     }
 
-    /* Footer */
-    .footer {
-      border-top: 1px solid var(--line);
-      padding: 32px 0;
-    }
+    .footer { border-top: 1px solid var(--line); padding: 32px 0; }
     .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.88rem;
-      color: var(--muted);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.88rem; color: var(--muted);
     }
     .footer-links { display: flex; gap: 20px; }
     .footer-links a { transition: color 0.2s; }
@@ -171,53 +122,65 @@
   <header class="topbar">
     <div class="wrap nav">
       <a class="brand" href="index.html">Dr. Rainer Hoffmann</a>
-      <a class="back-link" href="index.html">← Zurück</a>
+      <div class="nav-right">
+        <button class="lang-btn" id="lang-btn">EN</button>
+        <a class="back-link" id="back-link" href="index.html">← Zurück</a>
+      </div>
     </div>
   </header>
 
   <main>
     <div class="wrap">
       <div class="page-header">
-        <div class="eyebrow">Rechtliches</div>
-        <h1>Datenschutzerklärung</h1>
+        <div class="eyebrow" data-i18n="eyebrow">Rechtliches</div>
+        <h1 data-i18n="h1">Datenschutzerklärung</h1>
       </div>
 
       <div class="content-card">
-        <h2>1. Verantwortlicher</h2>
-        <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+        <h2 data-i18n="s1-h2">1. Verantwortlicher</h2>
+        <p data-i18n="s1-p1">Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
         <p>Dr. Rainer Hoffmann<br />
-        Gustav-Hofmann-Str. 23c<br />
-        76229 Karlsruhe<br />
-        E-Mail: <a href="mailto:hallo@rainer-hoffmann.com" style="color: var(--accent); font-weight: 600;">hallo@rainer-hoffmann.com</a></p>
+        [Straße und Hausnummer]<br />
+        [PLZ Ort]<br />
+        E-Mail: <a class="email-link" href="mailto:hallo@rainer-hoffmann.com">hallo@rainer-hoffmann.com</a></p>
 
-        <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
-        <p>Diese Website erhebt und verarbeitet keine personenbezogenen Daten über Tracking, Cookies oder Analysetools. Es werden keine Cookies gesetzt und keine Nutzerdaten gespeichert.</p>
-        <p>Beim Besuch dieser Website werden vom Hosting-Anbieter (GitHub Pages) technische Zugriffsdaten in Server-Logfiles gespeichert, darunter IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Seite sowie der verwendete Browser. Diese Daten werden ausschließlich zur Sicherstellung des technischen Betriebs verwendet und nicht mit anderen Datenquellen zusammengeführt.</p>
+        <h2 data-i18n="s2-h2">2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+        <p data-i18n="s2-p1">Diese Website erhebt und verarbeitet keine personenbezogenen Daten über Tracking, Cookies oder Analysetools. Es werden keine Cookies gesetzt und keine Nutzerdaten gespeichert.</p>
+        <p data-i18n="s2-p2">Beim Besuch dieser Website werden vom Hosting-Anbieter (GitHub Pages) technische Zugriffsdaten in Server-Logfiles gespeichert, darunter IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Seite sowie der verwendete Browser. Diese Daten werden ausschließlich zur Sicherstellung des technischen Betriebs verwendet und nicht mit anderen Datenquellen zusammengeführt.</p>
 
-        <h2>3. Hosting</h2>
-        <p>Diese Website wird über GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA) gehostet. GitHub verarbeitet beim Abruf der Seite technische Verbindungsdaten. Weitere Informationen finden Sie in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noreferrer noopener" style="color: var(--accent); font-weight: 600;">Datenschutzerklärung von GitHub</a>.</p>
+        <h2 data-i18n="s3-h2">3. Hosting</h2>
+        <p>
+          <span data-i18n="s3-p-before">Diese Website wird über GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA) gehostet. GitHub verarbeitet beim Abruf der Seite technische Verbindungsdaten. Weitere Informationen finden Sie in der</span>
+          <a class="ext-link" href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noreferrer noopener"> <span data-i18n="s3-link">Datenschutzerklärung von GitHub</span></a><span data-i18n="s3-p-after">.</span>
+        </p>
 
-        <h2>4. Kontaktaufnahme per E-Mail</h2>
-        <p>Wenn Sie mir per E-Mail schreiben, werden Ihre Angaben (Name, E-Mail-Adresse, Nachrichteninhalt) zur Bearbeitung Ihrer Anfrage und für mögliche Rückfragen gespeichert. Eine Weitergabe an Dritte findet nicht statt. Sie können der Speicherung Ihrer Daten jederzeit widersprechen, sofern kein gesetzlicher Aufbewahrungsgrund besteht.</p>
-        <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen).</p>
+        <h2 data-i18n="s4-h2">4. Kontaktaufnahme per E-Mail</h2>
+        <p data-i18n="s4-p1">Wenn Sie mir per E-Mail schreiben, werden Ihre Angaben (Name, E-Mail-Adresse, Nachrichteninhalt) zur Bearbeitung Ihrer Anfrage und für mögliche Rückfragen gespeichert. Eine Weitergabe an Dritte findet nicht statt. Sie können der Speicherung Ihrer Daten jederzeit widersprechen, sofern kein gesetzlicher Aufbewahrungsgrund besteht.</p>
+        <p data-i18n="s4-p2">Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen).</p>
 
-        <h2>5. Externe Links</h2>
-        <p>Diese Website enthält Links zu externen Diensten (LinkedIn, MIT Sloan Management Review, Handelsblatt u. a.). Beim Klick auf diese Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter. Ich habe keinen Einfluss auf deren Datenverarbeitung.</p>
+        <h2 data-i18n="s5-h2">5. Externe Links</h2>
+        <p data-i18n="s5-p">Diese Website enthält Links zu externen Diensten (LinkedIn, MIT Sloan Management Review, Handelsblatt u. a.). Beim Klick auf diese Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter. Ich habe keinen Einfluss auf deren Datenverarbeitung.</p>
 
-        <h2>6. Ihre Rechte</h2>
-        <p>Sie haben nach der DSGVO folgende Rechte gegenüber mir bezüglich Ihrer personenbezogenen Daten:</p>
-        <p>— Recht auf Auskunft (Art. 15 DSGVO)<br />
+        <h2 data-i18n="s6-h2">6. Ihre Rechte</h2>
+        <p data-i18n="s6-p1">Sie haben nach der DSGVO folgende Rechte gegenüber mir bezüglich Ihrer personenbezogenen Daten:</p>
+        <p data-i18n="s6-p2">— Recht auf Auskunft (Art. 15 DSGVO)<br />
         — Recht auf Berichtigung (Art. 16 DSGVO)<br />
         — Recht auf Löschung (Art. 17 DSGVO)<br />
         — Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)<br />
         — Recht auf Datenübertragbarkeit (Art. 20 DSGVO)<br />
         — Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</p>
-        <p>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:hallo@rainer-hoffmann.com" style="color: var(--accent); font-weight: 600;">hallo@rainer-hoffmann.com</a></p>
-        <p>Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.</p>
+        <p>
+          <span data-i18n="s6-p3-before">Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:</span>
+          <a class="email-link" href="mailto:hallo@rainer-hoffmann.com"> hallo@rainer-hoffmann.com</a>
+        </p>
+        <p data-i18n="s6-p4">Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.</p>
 
-        <h2>7. Aktualität dieser Erklärung</h2>
-        <p>Diese Datenschutzerklärung hat den Stand Mai 2026. Ich behalte mir vor, sie bei Änderungen der Website oder der Rechtslage anzupassen.</p>
+        <h2 data-i18n="s7-h2">7. Aktualität dieser Erklärung</h2>
+        <p data-i18n="s7-p">Diese Datenschutzerklärung hat den Stand Mai 2026. Ich behalte mir vor, sie bei Änderungen der Website oder der Rechtslage anzupassen.</p>
 
+        <div class="note" data-i18n="note">
+          Bitte ergänzen Sie die mit [eckigen Klammern] gekennzeichneten Felder mit Ihren tatsächlichen Angaben und lassen Sie diese Erklärung vor Veröffentlichung rechtlich prüfen.
+        </div>
       </div>
     </div>
   </main>
@@ -226,13 +189,101 @@
     <div class="wrap footer-inner">
       <span>Dr. Rainer Hoffmann · 2026</span>
       <div class="footer-links">
-        <a href="mailto:hallo@rainer-hoffmann.com">Kontakt</a>
+        <a href="mailto:hallo@rainer-hoffmann.com" data-i18n="footer-contact">Kontakt</a>
         <a href="https://www.linkedin.com/in/rainer-hoffmann-ai/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html" data-i18n="footer-impressum">Impressum</a>
+        <a href="datenschutz.html" data-i18n="footer-datenschutz">Datenschutz</a>
       </div>
     </div>
   </footer>
 
+  <script>
+    const t = {
+      de: {
+        'page-title': 'Datenschutzerklärung | Dr. Rainer Hoffmann',
+        'eyebrow':    'Rechtliches',
+        'h1':         'Datenschutzerklärung',
+        'back-link':  '← Zurück',
+        's1-h2':  '1. Verantwortlicher',
+        's1-p1':  'Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:',
+        's2-h2':  '2. Erhebung und Verarbeitung personenbezogener Daten',
+        's2-p1':  'Diese Website erhebt und verarbeitet keine personenbezogenen Daten über Tracking, Cookies oder Analysetools. Es werden keine Cookies gesetzt und keine Nutzerdaten gespeichert.',
+        's2-p2':  'Beim Besuch dieser Website werden vom Hosting-Anbieter (GitHub Pages) technische Zugriffsdaten in Server-Logfiles gespeichert, darunter IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Seite sowie der verwendete Browser. Diese Daten werden ausschließlich zur Sicherstellung des technischen Betriebs verwendet und nicht mit anderen Datenquellen zusammengeführt.',
+        's3-h2':       '3. Hosting',
+        's3-p-before': 'Diese Website wird über GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA) gehostet. GitHub verarbeitet beim Abruf der Seite technische Verbindungsdaten. Weitere Informationen finden Sie in der',
+        's3-link':     'Datenschutzerklärung von GitHub',
+        's3-p-after':  '.',
+        's4-h2':  '4. Kontaktaufnahme per E-Mail',
+        's4-p1':  'Wenn Sie mir per E-Mail schreiben, werden Ihre Angaben (Name, E-Mail-Adresse, Nachrichteninhalt) zur Bearbeitung Ihrer Anfrage und für mögliche Rückfragen gespeichert. Eine Weitergabe an Dritte findet nicht statt. Sie können der Speicherung Ihrer Daten jederzeit widersprechen, sofern kein gesetzlicher Aufbewahrungsgrund besteht.',
+        's4-p2':  'Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen).',
+        's5-h2':  '5. Externe Links',
+        's5-p':   'Diese Website enthält Links zu externen Diensten (LinkedIn, MIT Sloan Management Review, Handelsblatt u. a.). Beim Klick auf diese Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter. Ich habe keinen Einfluss auf deren Datenverarbeitung.',
+        's6-h2':  '6. Ihre Rechte',
+        's6-p1':  'Sie haben nach der DSGVO folgende Rechte gegenüber mir bezüglich Ihrer personenbezogenen Daten:',
+        's6-p2':  '— Recht auf Auskunft (Art. 15 DSGVO)\n— Recht auf Berichtigung (Art. 16 DSGVO)\n— Recht auf Löschung (Art. 17 DSGVO)\n— Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)\n— Recht auf Datenübertragbarkeit (Art. 20 DSGVO)\n— Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)',
+        's6-p3-before': 'Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:',
+        's6-p4':  'Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.',
+        's7-h2':  '7. Aktualität dieser Erklärung',
+        's7-p':   'Diese Datenschutzerklärung hat den Stand Mai 2026. Ich behalte mir vor, sie bei Änderungen der Website oder der Rechtslage anzupassen.',
+        'note':   'Bitte ergänzen Sie die mit [eckigen Klammern] gekennzeichneten Felder mit Ihren tatsächlichen Angaben und lassen Sie diese Erklärung vor Veröffentlichung rechtlich prüfen.',
+        'footer-contact':    'Kontakt',
+        'footer-impressum':  'Impressum',
+        'footer-datenschutz':'Datenschutz',
+      },
+      en: {
+        'page-title': 'Privacy Policy | Dr. Rainer Hoffmann',
+        'eyebrow':    'Legal',
+        'h1':         'Privacy Policy',
+        'back-link':  '← Back',
+        's1-h2':  '1. Controller',
+        's1-p1':  'The controller within the meaning of the General Data Protection Regulation (GDPR) is:',
+        's2-h2':  '2. Collection and Processing of Personal Data',
+        's2-p1':  'This website does not collect or process personal data through tracking tools, cookies, or analytics. No cookies are set and no user data is stored.',
+        's2-p2':  'When visiting this website, technical access data is stored in server log files by the hosting provider (GitHub Pages), including IP address, date and time of access, page accessed, and the browser used. This data is used exclusively to ensure technical operation and is not merged with other data sources.',
+        's3-h2':       '3. Hosting',
+        's3-p-before': 'This website is hosted via GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). GitHub processes technical connection data when the page is accessed. For more information, please refer to the',
+        's3-link':     'GitHub Privacy Statement',
+        's3-p-after':  '.',
+        's4-h2':  '4. Contact by Email',
+        's4-p1':  'If you contact me by email, your details (name, email address, message content) will be stored to process your request and for possible follow-up questions. They will not be passed on to third parties. You can object to the storage of your data at any time, provided there is no legal retention obligation.',
+        's4-p2':  'Legal basis: Art. 6 para. 1 lit. f GDPR (legitimate interest in responding to inquiries).',
+        's5-h2':  '5. External Links',
+        's5-p':   'This website contains links to external services (LinkedIn, MIT Sloan Management Review, Handelsblatt, etc.). When you click on these links, the privacy policies of the respective providers apply. I have no influence over their data processing.',
+        's6-h2':  '6. Your Rights',
+        's6-p1':  'Under the GDPR, you have the following rights regarding your personal data:',
+        's6-p2':  '— Right of access (Art. 15 GDPR)\n— Right to rectification (Art. 16 GDPR)\n— Right to erasure (Art. 17 GDPR)\n— Right to restriction of processing (Art. 18 GDPR)\n— Right to data portability (Art. 20 GDPR)\n— Right to object to processing (Art. 21 GDPR)',
+        's6-p3-before': 'To exercise your rights, please contact:',
+        's6-p4':  'You also have the right to lodge a complaint with a data protection supervisory authority regarding the processing of your personal data.',
+        's7-h2':  '7. Updates to this Policy',
+        's7-p':   'This privacy policy is current as of May 2026. I reserve the right to update it in the event of changes to the website or applicable law.',
+        'note':   'Please fill in the fields marked with [square brackets] with your actual details and have this statement reviewed by a legal professional before publishing.',
+        'footer-contact':    'Contact',
+        'footer-impressum':  'Legal Notice',
+        'footer-datenschutz':'Privacy Policy',
+      }
+    };
+
+    let lang = 'de';
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[l][key] !== undefined) el.textContent = t[l][key];
+      });
+      document.getElementById('back-link').textContent = t[l]['back-link'];
+      document.title = t[l]['page-title'];
+      const btn = document.getElementById('lang-btn');
+      btn.textContent = l === 'de' ? 'EN' : 'DE';
+      btn.classList.toggle('active-en', l === 'en');
+    }
+
+    document.getElementById('lang-btn').addEventListener('click', () => setLang(lang === 'de' ? 'en' : 'de'));
+
+    const saved = localStorage.getItem('lang');
+    if (saved === 'en') setLang('en');
+  </script>
 </body>
 </html>

@@ -9,23 +9,22 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:             #f7f6f3;
-      --surface:        rgba(255,255,255,0.88);
-      --surface-strong: #ffffff;
-      --text:           #1a1c18;
-      --muted:          #5e6159;
-      --line:           #dedad4;
-      --accent:         #2f4f4f;
-      --accent-soft:    #e8efee;
-      --shadow:         0 12px 32px rgba(20,24,20,0.09);
-      --radius:         20px;
-      --radius-sm:      12px;
-      --max:            760px;
-      --ease:           cubic-bezier(0.22, 1, 0.36, 1);
+      --bg:          #f7f6f3;
+      --surface:     rgba(255,255,255,0.88);
+      --text:        #1a1c18;
+      --muted:       #5e6159;
+      --line:        #dedad4;
+      --accent:      #2f4f4f;
+      --accent-dark: #1e3535;
+      --accent-soft: #e8efee;
+      --shadow:      0 12px 32px rgba(20,24,20,0.09);
+      --radius:      20px;
+      --radius-sm:   12px;
+      --max:         760px;
+      --ease:        cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
       color: var(--text);
@@ -33,19 +32,12 @@
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
-
     a { color: inherit; text-decoration: none; }
 
-    .wrap {
-      width: min(var(--max), calc(100% - 48px));
-      margin: 0 auto;
-    }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
 
-    /* Nav */
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
       background: rgba(247,246,243,0.88);
@@ -57,54 +49,46 @@
       align-items: center;
       height: 60px;
     }
-    .brand {
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
+    .brand { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+
     .back-link {
-      font-size: 0.9rem;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 0.9rem; color: var(--muted);
+      display: inline-flex; align-items: center; gap: 6px;
       transition: color 0.2s;
     }
     .back-link:hover { color: var(--text); }
 
-    /* Content */
-    main {
-      padding: 64px 0 100px;
+    .lang-btn {
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1.5px solid var(--line);
+      background: white;
+      color: var(--muted);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
     }
+    .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .lang-btn.active-en { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 
-    .page-header {
-      margin-bottom: 40px;
-    }
+    main { padding: 64px 0 100px; }
+
+    .page-header { margin-bottom: 40px; }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--accent);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--accent); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;
     }
     .eyebrow::before {
-      content: '';
-      display: inline-block;
+      content: ''; display: inline-block;
       width: 24px; height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
+      background: var(--accent); border-radius: 2px;
     }
-
     h1 {
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+      font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
     }
 
     .content-card {
@@ -116,43 +100,27 @@
     }
 
     h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin: 32px 0 10px;
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: 0.06em; margin: 32px 0 10px;
     }
     h2:first-child { margin-top: 0; }
 
-    p {
-      font-size: 0.97rem;
-      color: #3a3c37;
-      line-height: 1.75;
-      margin-bottom: 6px;
-    }
+    p { font-size: 0.97rem; color: #3a3c37; line-height: 1.75; margin-bottom: 6px; }
+    p:last-child { margin-bottom: 0; }
+
+    .email-link { color: var(--accent); font-weight: 600; }
 
     .note {
-      margin-top: 32px;
-      padding: 16px 20px;
-      background: var(--accent-soft);
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.65;
+      margin-top: 32px; padding: 16px 20px;
+      background: var(--accent-soft); border-radius: var(--radius-sm);
+      font-size: 0.9rem; color: var(--muted); line-height: 1.65;
     }
 
-    /* Footer */
-    .footer {
-      border-top: 1px solid var(--line);
-      padding: 32px 0;
-    }
+    .footer { border-top: 1px solid var(--line); padding: 32px 0; }
     .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.88rem;
-      color: var(--muted);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.88rem; color: var(--muted);
     }
     .footer-links { display: flex; gap: 20px; }
     .footer-links a { transition: color 0.2s; }
@@ -170,40 +138,46 @@
   <header class="topbar">
     <div class="wrap nav">
       <a class="brand" href="index.html">Dr. Rainer Hoffmann</a>
-      <a class="back-link" href="index.html">← Zurück</a>
+      <div class="nav-right">
+        <button class="lang-btn" id="lang-btn">EN</button>
+        <a class="back-link" id="back-link" href="index.html">← Zurück</a>
+      </div>
     </div>
   </header>
 
   <main>
     <div class="wrap">
       <div class="page-header">
-        <div class="eyebrow">Rechtliches</div>
-        <h1>Impressum</h1>
+        <div class="eyebrow" data-i18n="eyebrow">Rechtliches</div>
+        <h1 data-i18n="h1">Impressum</h1>
       </div>
 
       <div class="content-card">
-        <h2>Angaben gemäß § 5 TMG</h2>
+        <h2 data-i18n="s1-h2">Angaben gemäß § 5 TMG</h2>
         <p>Dr. Rainer Hoffmann</p>
-        <p>Gustav-Hofmann-Str. 23c</p>
-        <p>76229 Karlsruhe</p>
+        <p>[Straße und Hausnummer]</p>
+        <p>[PLZ Ort]</p>
 
-        <h2>Kontakt</h2>
-        <p>E-Mail: <a href="mailto:hallo@rainer-hoffmann.com" style="color: var(--accent); font-weight: 600;">hallo@rainer-hoffmann.com</a></p>
+        <h2 data-i18n="s2-h2">Kontakt</h2>
+        <p>E-Mail: <a class="email-link" href="mailto:hallo@rainer-hoffmann.com">hallo@rainer-hoffmann.com</a></p>
 
-        <h2>Verantwortlich für den Inhalt</h2>
-        <p>Dr. Rainer Hoffmann (Anschrift wie oben)</p>
+        <h2 data-i18n="s3-h2">Verantwortlich für den Inhalt</h2>
+        <p data-i18n="s3-p">Dr. Rainer Hoffmann (Anschrift wie oben)</p>
 
-        <h2>Haftung für Inhalte</h2>
-        <p>Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-        <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.</p>
+        <h2 data-i18n="s4-h2">Haftung für Inhalte</h2>
+        <p data-i18n="s4-p1">Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        <p data-i18n="s4-p2">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.</p>
 
-        <h2>Haftung für Links</h2>
-        <p>Mein Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
-        <p>Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werde ich derartige Links umgehend entfernen.</p>
+        <h2 data-i18n="s5-h2">Haftung für Links</h2>
+        <p data-i18n="s5-p1">Mein Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+        <p data-i18n="s5-p2">Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werde ich derartige Links umgehend entfernen.</p>
 
-        <h2>Urheberrecht</h2>
-        <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+        <h2 data-i18n="s6-h2">Urheberrecht</h2>
+        <p data-i18n="s6-p">Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
 
+        <div class="note" data-i18n="note">
+          Bitte ergänzen Sie die mit [eckigen Klammern] gekennzeichneten Felder mit Ihren tatsächlichen Angaben, bevor Sie diese Seite veröffentlichen.
+        </div>
       </div>
     </div>
   </main>
@@ -212,13 +186,83 @@
     <div class="wrap footer-inner">
       <span>Dr. Rainer Hoffmann · 2026</span>
       <div class="footer-links">
-        <a href="mailto:hallo@rainer-hoffmann.com">Kontakt</a>
+        <a href="mailto:hallo@rainer-hoffmann.com" data-i18n="footer-contact">Kontakt</a>
         <a href="https://www.linkedin.com/in/rainer-hoffmann-ai/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html" data-i18n="footer-impressum">Impressum</a>
+        <a href="datenschutz.html" data-i18n="footer-datenschutz">Datenschutz</a>
       </div>
     </div>
   </footer>
 
+  <script>
+    const t = {
+      de: {
+        'page-title':   'Impressum | Dr. Rainer Hoffmann',
+        'eyebrow':      'Rechtliches',
+        'h1':           'Impressum',
+        'back-link':    '← Zurück',
+        's1-h2':        'Angaben gemäß § 5 TMG',
+        's2-h2':        'Kontakt',
+        's3-h2':        'Verantwortlich für den Inhalt',
+        's3-p':         'Dr. Rainer Hoffmann (Anschrift wie oben)',
+        's4-h2':        'Haftung für Inhalte',
+        's4-p1':        'Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.',
+        's4-p2':        'Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.',
+        's5-h2':        'Haftung für Links',
+        's5-p1':        'Mein Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.',
+        's5-p2':        'Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werde ich derartige Links umgehend entfernen.',
+        's6-h2':        'Urheberrecht',
+        's6-p':         'Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.',
+        'note':         'Bitte ergänzen Sie die mit [eckigen Klammern] gekennzeichneten Felder mit Ihren tatsächlichen Angaben, bevor Sie diese Seite veröffentlichen.',
+        'footer-contact':    'Kontakt',
+        'footer-impressum':  'Impressum',
+        'footer-datenschutz':'Datenschutz',
+      },
+      en: {
+        'page-title':   'Legal Notice | Dr. Rainer Hoffmann',
+        'eyebrow':      'Legal',
+        'h1':           'Legal Notice',
+        'back-link':    '← Back',
+        's1-h2':        'Information Required by § 5 TMG',
+        's2-h2':        'Contact',
+        's3-h2':        'Responsible for Content',
+        's3-p':         'Dr. Rainer Hoffmann (address as above)',
+        's4-h2':        'Liability for Content',
+        's4-p1':        'As a service provider, I am responsible for my own content on these pages in accordance with § 7 para. 1 TMG under general law. According to §§ 8 to 10 TMG, however, I am not obligated as a service provider to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.',
+        's4-p2':        'Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the time of knowledge of a specific legal violation. Upon becoming aware of such violations, I will remove this content immediately.',
+        's5-h2':        'Liability for Links',
+        's5-p1':        'My website contains links to external third-party websites over whose content I have no influence. Therefore, I cannot accept any liability for these external contents. The respective provider or operator of the pages is always responsible for the content of the linked pages.',
+        's5-p2':        'The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognizable at the time of linking. A permanent content control of the linked pages is not reasonable without concrete evidence of a legal violation. Upon becoming aware of legal violations, I will remove such links immediately.',
+        's6-h2':        'Copyright',
+        's6-p':         'The content and works on these pages created by the site operator are subject to German copyright law. Reproduction, processing, distribution and any kind of use beyond the limits of copyright law require the written consent of the respective author or creator.',
+        'note':         'Please fill in the fields marked with [square brackets] with your actual details before publishing this page.',
+        'footer-contact':    'Contact',
+        'footer-impressum':  'Legal Notice',
+        'footer-datenschutz':'Privacy Policy',
+      }
+    };
+
+    let lang = 'de';
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[l][key] !== undefined) el.textContent = t[l][key];
+      });
+      document.getElementById('back-link').textContent = t[l]['back-link'];
+      document.title = t[l]['page-title'];
+      const btn = document.getElementById('lang-btn');
+      btn.textContent = l === 'de' ? 'EN' : 'DE';
+      btn.classList.toggle('active-en', l === 'en');
+    }
+
+    document.getElementById('lang-btn').addEventListener('click', () => setLang(lang === 'de' ? 'en' : 'de'));
+
+    const saved = localStorage.getItem('lang');
+    if (saved === 'en') setLang('en');
+  </script>
 </body>
 </html>
