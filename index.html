@@ -373,12 +373,6 @@
       transition: gap 0.2s ease;
     }
     .publication .readmore:hover { gap: 8px; }
-    .publication.placeholder {
-      border: 1.5px dashed var(--line);
-      background: rgba(255,255,255,0.45);
-      box-shadow: none;
-    }
-    .publication.placeholder:hover { box-shadow: var(--shadow-sm); }
 
     /* ── About ── */
     .about-layout {
@@ -415,27 +409,17 @@
       line-height: 1.4;
     }
 
-    .bullet-list { margin-top: 18px; }
+    .bullet-list { margin-top: 20px; display: grid; gap: 12px; list-style: none; }
     .bullet-list li {
       font-size: 0.95rem;
       color: var(--muted);
-      padding: 11px 0;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      gap: 12px;
-      align-items: baseline;
-      line-height: 1.55;
+      line-height: 1.6;
+      padding: 14px 16px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
     }
-    .bullet-list li:last-child { border-bottom: none; }
-    .bullet-list li::before {
-      content: '';
-      flex-shrink: 0;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      margin-top: 6px;
-    }
-    .bullet-list li strong { color: var(--text); }
+    .bullet-list li strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 0.93rem; }
 
     .photo-card {
       border-radius: var(--radius);
@@ -690,7 +674,7 @@
           <p class="section-intro reveal d1">Ausgewählte Veröffentlichungen und Perspektiven.</p>
         </div>
         <div class="grid-2">
-          <article class="publication placeholder reveal d1">
+          <article class="publication reveal d1">
             <span class="tag">KI & Leadership</span>
             <h3>KI als Test für Führungsqualität</h3>
             <p>Der Artikel argumentiert, dass KI Entscheidungslogiken, Rollen, Verantwortung und Autoritätsstrukturen in Organisationen tiefgreifend verändert — und damit zur Führungsfrage wird. Auf dieser Grundlage entwickelt er eine Landkarte wirksamen Führungshandelns, die KI nicht als bloßes Effizienzwerkzeug, sondern als Entwicklungsimpuls für zukunftsfähige Organisationen begreift.</p>
@@ -706,7 +690,7 @@
             <a class="readmore" href="https://www.transformieren.art/transfomagazin/2025/9/24/eine-zieldienliche-ki-integration-kann-dazu-fhren-dass-menschen-in-ihrer-arbeit-aufblhen" target="_blank" rel="noreferrer noopener">Beitrag öffnen →</a>
           </article>
 
-          <article class="publication placeholder reveal d3">
+          <article class="publication reveal d3">
             <span class="tag">Responsible AI</span>
             <h3>Why Responsible Artificial Intelligence Must Address Workforce Impact</h3>
             <p>Mitwirkung an einem Beitrag des MIT Sloan Management Reviews über Workforce Impact als blinden Fleck vieler Responsible-AI-Ansätze — und darüber, warum verantwortlicher KI-Einsatz immer auch eine Frage von Arbeitsgestaltung und Organisation ist.</p>
@@ -714,7 +698,7 @@
             <a class="readmore" href="https://sloanreview.mit.edu/article/beyond-the-model-why-responsible-ai-must-address-workforce-impact/">Beitrag öffnen →</a>
           </article>
 
-          <article class="publication placeholder reveal d4">
+          <article class="publication reveal d4">
             <span class="tag">Responsible AI</span>
             <h3>Seriousness About Responsible Artificial Intelligence</h3>
             <p>Beitrag für das MIT Sloan Management Review zur globalen Responsible-AI-Governance. Mein Impuls: Weniger die Prinzipien selbst als vielmehr ihre Übersetzung in Prozesse, Gremien und Organisationskultur entscheidet darüber, ob Responsible AI in Unternehmen tatsächlich wirksam wird.</p>
