@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Führung – Selbsteinschätzung</title>
+<style>
+  :root{
+    --paper:#F1F3EF;--card:#FFFFFF;--ink:#16262A;--ink-soft:#4E5F60;--ink-faint:#8A9896;
+    --line:#D9DED6;--line-soft:#E7EAE3;--accent:#0F6E64;--accent-deep:#0A4E47;--accent-soft:#E1EEEA;
+    --warn:#A8642F;--warn-soft:#F3E7DA;--radius:4px;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}html,body{margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 96px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  h1{font-size:clamp(26px,5vw,38px);line-height:1.1;letter-spacing:-.02em;font-weight:640;margin:0 0 14px}
+  h2{font-size:20px;letter-spacing:-.01em;margin:0 0 6px;font-weight:620}
+  p.lede{color:var(--ink-soft);font-size:16px;margin:0 0 8px}
+  .rule{height:1px;background:var(--line);border:0;margin:26px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .field{margin:18px 0}
+  label.flabel{display:block;font-size:13px;font-weight:600;margin-bottom:7px;color:var(--ink)}
+  .hint{font-size:13px;color:var(--ink-faint);margin-top:5px}
+  input[type=text]{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);padding:11px 12px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+  input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .segmented{display:flex;flex-wrap:wrap;gap:8px}
+  .seg{flex:1 1 auto;min-width:140px;text-align:center;cursor:pointer;padding:11px 12px;border:1px solid var(--line);border-radius:var(--radius);font-size:14px;background:#fff;color:var(--ink-soft);user-select:none}
+  .seg[aria-pressed=true]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-deep);font-weight:600}
+  .seg:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .btn{font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;padding:12px 22px;border-radius:var(--radius);border:1px solid var(--accent);background:var(--accent);color:#fff}
+  .btn:hover{background:var(--accent-deep);border-color:var(--accent-deep)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btn.ghost{background:transparent;color:var(--accent);border-color:var(--line)}
+  .btn.ghost:hover{background:var(--accent-soft);border-color:var(--accent)}
+  .btn:focus-visible{outline:2px solid var(--accent-deep);outline-offset:2px}
+  .btnrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:26px}
+  .progwrap{position:sticky;top:0;z-index:5;background:var(--paper);padding:12px 0 14px;margin-bottom:8px}
+  .progmeta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-faint);margin-bottom:7px}
+  .progtrack{height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+  .progbar{height:100%;background:var(--accent);width:0;transition:width .25s ease}
+  @media (prefers-reduced-motion:reduce){.progbar{transition:none}}
+  .dim{margin:30px 0 10px}
+  .dimhead{display:flex;align-items:baseline;gap:12px;margin-bottom:2px}
+  .dimcode{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
+  .dimname{font-size:17px;font-weight:640;letter-spacing:-.01em}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:10px 0}
+  .item.unanswered-flag{border-color:var(--warn);box-shadow:0 0 0 1px var(--warn)}
+  .itemtop{display:flex;gap:11px;margin-bottom:13px}
+  .itemno{font-family:var(--mono);font-size:12px;color:var(--ink-faint);padding-top:2px;min-width:26px}
+  .itemtext{font-size:15px;color:var(--ink)}
+  .scale{display:flex;gap:7px;flex-wrap:wrap}
+  .opt{position:relative;flex:1 1 0;min-width:64px}
+  .opt input{position:absolute;opacity:0;width:0;height:0}
+  .opt label{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;border:1px solid var(--line);border-radius:var(--radius);padding:9px 6px;height:100%;text-align:center;background:#fff;transition:background .12s,border-color .12s}
+  .opt .num{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink-soft)}
+  .opt .lab{font-size:10.5px;line-height:1.25;color:var(--ink-faint)}
+  .opt input:checked + label{border-color:var(--accent);background:var(--accent-soft)}
+  .opt input:checked + label .num,.opt input:checked + label .lab{color:var(--accent-deep)}
+  .opt input:focus-visible + label{outline:2px solid var(--accent);outline-offset:1px}
+  .opt.na label{border-style:dashed}
+  .opt.na input:checked + label{border-color:var(--ink-faint);background:#EEF0EC}
+  .opt.na input:checked + label .num,.opt.na input:checked + label .lab{color:var(--ink-soft)}
+  @media (max-width:520px){.opt{min-width:0;flex-basis:calc(20% - 6px)}.opt .lab{display:none}.opt.na .lab{display:block;font-size:9px}}
+  .scoreline{display:flex;align-items:center;gap:14px;margin:14px 0}
+  .scoreline .sc-code{font-family:var(--mono);font-size:12px;color:var(--accent);min-width:22px}
+  .scoreline .sc-name{font-size:14px;flex:0 0 clamp(120px,34%,220px)}
+  .sc-barwrap{flex:1;height:22px;background:var(--line-soft);border-radius:3px;position:relative;overflow:hidden}
+  .sc-bar{height:100%;background:var(--accent);border-radius:3px 0 0 3px;transition:width .5s ease}
+  .sc-bar.low{background:var(--warn)}.sc-bar.mid{background:#C9A227}
+  .sc-val{font-family:var(--mono);font-size:13px;min-width:44px;text-align:right;color:var(--ink)}
+  .overall{display:flex;align-items:baseline;gap:10px;margin:8px 0 4px}
+  .overall .big{font-family:var(--mono);font-size:34px;font-weight:600;color:var(--accent-deep)}
+  .overall .of{font-family:var(--mono);font-size:15px;color:var(--ink-faint)}
+  .note{font-size:13px;color:var(--ink-soft);background:var(--accent-soft);border-left:3px solid var(--accent);padding:12px 14px;border-radius:0 var(--radius) var(--radius) 0;margin:16px 0}
+  .note.warn{background:var(--warn-soft);border-left-color:var(--warn)}
+  .banner{font-size:13px;padding:12px 14px;border-radius:var(--radius);margin-bottom:18px}
+  .banner.err{background:var(--warn-soft);color:#6e3d18;border:1px solid var(--warn)}
+  .banner.cfg{background:#FBF6E7;color:#6b5a1e;border:1px solid #D9C97A}
+  .foot{margin-top:34px;font-size:12px;color:var(--ink-faint);line-height:1.6}
+  .spin{display:inline-block;width:15px;height:15px;border:2px solid var(--accent-soft);border-top-color:var(--accent);border-radius:50%;animation:sp .8s linear infinite;vertical-align:-2px;margin-right:8px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.spin{animation:none}}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="cfg-banner"></div>
+
+  <!-- START -->
+  <section id="view-start">
+    <p class="eyebrow">Diagnostik · KI-Führung</p>
+    <h1>KI als Führungsaufgabe:<br>Selbsteinschätzung</h1>
+    <p class="lede">Ein kurzer Selbsttest zu Haltung, Verständnis und Führungspraxis rund um KI. 22 Aussagen, rund 7 Minuten. Es gibt keine richtigen Antworten – ehrlich ist wertvoller als gut.</p>
+    <p class="lede">Vielen Dank, dass Sie an dieser Studie teilnehmen – Ihre ehrliche Einschätzung ist der wertvollste Beitrag.</p>
+    <hr class="rule">
+    <div class="card">
+      <div class="field">
+        <label class="flabel">Rolle</label>
+        <div class="segmented" id="role-seg" role="group" aria-label="Rolle">
+          <button type="button" class="seg" data-role="Geschäftsleitung" aria-pressed="false">Geschäftsleitung</button>
+          <button type="button" class="seg" data-role="Mittleres Management" aria-pressed="false">Mittleres Management</button>
+          <button type="button" class="seg" data-role="Teamleiter" aria-pressed="false">Teamleiter</button>
+          <button type="button" class="seg" data-role="Sonstige" aria-pressed="false">Sonstige</button>
+        </div>
+      </div>
+      <div class="btnrow"><button class="btn" id="start-btn" disabled>Befragung starten</button></div>
+    </div>
+    <p class="foot">Ihre Antworten werden anonym an eine zentrale Auswertungstabelle übermittelt. Es wird kein Name erhoben.</p>
+  </section>
+
+  <!-- SURVEY -->
+  <section id="view-survey" class="hidden">
+    <div class="progwrap">
+      <div class="progmeta"><span id="prog-label">0 / 25 beantwortet</span><span id="prog-role"></span></div>
+      <div class="progtrack"><div class="progbar" id="progbar"></div></div>
+    </div>
+    <div id="items"></div>
+    <div class="btnrow">
+      <button class="btn" id="submit-btn">Absenden</button>
+      <button class="btn ghost" id="cancel-btn">Abbrechen</button>
+      <span id="submit-hint" class="hint" style="margin:0"></span>
+    </div>
+  </section>
+
+  <!-- RESULT / DANKE -->
+  <section id="view-result" class="hidden">
+    <p class="eyebrow">Übermittelt</p>
+    <h1>Vielen Dank für Ihre Teilnahme.</h1>
+    <p class="lede">Ihre Antworten wurden erfolgreich übermittelt und fließen anonym in die Auswertung der Studie ein.</p>
+    <div class="note" style="margin-top:20px"><strong>Bestätigung:</strong> <span id="res-confirm">Ihre Werte wurden gespeichert.</span></div>
+    <div class="btnrow"><button class="btn ghost" id="again-btn">Neue Befragung starten</button></div>
+  </section>
+
+  <!-- SUBMITTING / ERROR -->
+  <section id="view-send" class="hidden">
+    <div id="send-inner"></div>
+  </section>
+</div>
+
+<script>
+/* =====================================================================
+   KONFIGURATION  —  hier deine Web-App-URL aus Google Apps Script eintragen.
+   (Endet auf .../exec)  Solange der Platzhalter steht, warnt die Seite.
+   ===================================================================== */
+const CONFIG = {
+  endpoint: "https://script.google.com/macros/s/AKfycbyacDh0-kDg7pEtbGmZYI7fZMuXUIRCPpO2uF0bUyZwDJPlDc9rzejTxtmn81MfBlyW/exec"
+};
+/* ===================================================================== */
+
+const DIMS={A:"KI-Verständnis & eigene Anwendung",B:"Führung als Disziplin",C:"Strategie, Ziel & Klammerfunktion",D:"Erwartungshaltung an KI",E:"Umgang mit Unsicherheit & Nichtwissen",F:"Experten-Identität",G:"Gemeinsames Lernen",H:"Antrieb & Druck"};
+const ITEMS=[
+ {id:"A1",dim:"A",pole:"+",text:"Ich kann für meinen Bereich konkret beschreiben, wo KI welchen Nutzen stiftet – nicht nur, dass sie „wichtig“ ist."},
+ {id:"A2",dim:"A",pole:"+",text:"Ich nutze KI-Werkzeuge regelmäßig in meiner eigenen Arbeit – nicht nur privat oder zum Ausprobieren."},
+ {id:"A3",dim:"A",pole:"+",text:"Aus eigener Nutzung habe ich ein Gefühl dafür, was heute gut funktioniert und was (noch) nicht."},
+ {id:"B1",dim:"B",pole:"+",text:"Führung ist für mich eine eigene Disziplin, an der ich gezielt arbeite – nicht etwas, das sich aus Fachkompetenz von selbst ergibt."},
+ {id:"B2",dim:"B",pole:"+",text:"Meine Wirkung als Führungskraft messe ich an Ergebnissen, nicht an meiner fachlichen Tiefe."},
+ {id:"B3",dim:"B",pole:"+",text:"Das Vorantreiben von KI verstehe ich als eine meiner eigenen Führungsaufgaben – nicht als etwas, das eine Ebene tiefer „passiert“."},
+ {id:"B4",dim:"B",pole:"+",text:"Richtung und Priorisierung bei KI behalte ich bei mir, auch wenn ich die Umsetzung delegiere."},
+ {id:"C1",dim:"C",pole:"+",text:"Für unseren KI-Einsatz gibt es eine klare Richtung, die ich benennen und begründen kann."},
+ {id:"C2",dim:"C",pole:"+",text:"KI ist bei uns in die Gesamtstrategie eingebettet, nicht ein Thema neben der Strategie."},
+ {id:"C5",dim:"C",pole:"-",text:"KI soll bei uns eingeführt und skaliert werden, ohne dass mir klar ist, wozu genau."},
+ {id:"C6",dim:"C",pole:"+",text:"Wenn ich etwas „zu KI“ delegiere, ist es die Umsetzung – nicht die Frage, wofür wir KI einsetzen."},
+ {id:"D1",dim:"D",pole:"-",text:"Von KI erwarte ich vor allem schnelle Effizienzgewinne."},
+ {id:"D2",dim:"D",pole:"+",text:"Ich rechne bei KI realistisch mit Grenzen, Aufwand und auch Fehlschlägen."},
+ {id:"E1",dim:"E",pole:"+",text:"In Führungsrunden kann ich offen sagen, wenn ich bei KI etwas nicht weiß."},
+ {id:"E2",dim:"E",pole:"+",text:"Wenn ich in einem Thema kein Experte bin, spreche ich das gegenüber Team und Kollegen offen aus."},
+ {id:"E3",dim:"E",pole:"+",text:"Ich habe Sparringspartner, mit denen ich meine offenen KI-Fragen ehrlich durchgehe."},
+ {id:"F1",dim:"F",pole:"-",text:"In meinem Verantwortungsbereich sehe ich es als meine Aufgabe, fachlich der/die Beste zu sein."},
+ {id:"F2",dim:"F",pole:"+",text:"Es fällt mir leicht zu sagen: „Das weiß jemand im Team besser als ich.“"},
+ {id:"F3",dim:"F",pole:"+",text:"Ein Feld, in dem ich (noch) kein Experte bin, kann ich neugierig angehen, ohne dass es mich verunsichert."},
+ {id:"G1",dim:"G",pole:"+",text:"Sich bereichsübergreifend über Probleme und Fehlschläge auszutauschen, ist bei uns gelebte Praxis."},
+ {id:"G2",dim:"G",pole:"-",text:"Ich erlebe, dass andere Bereiche bei KI aus Sorge um ihr Standing wenig transparent sind."},
+ {id:"H1",dim:"H",pole:"-",text:"Ich beschäftige mich mit KI eher wegen äußeren Drucks (Aufsichtsrat, Wettbewerb, Zielvereinbarung/Bonus) als aus eigenem Gestaltungswillen."}
+];
+const SCALE=[{v:1,lab:"trifft nicht zu"},{v:2,lab:"trifft eher nicht zu"},{v:3,lab:"trifft eher zu"},{v:4,lab:"trifft voll zu"}];
+const DIM_ORDER=Object.keys(DIMS), TOTAL=ITEMS.length;
+
+let respondent={role:""}, answers={};
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+function show(id){["start","survey","result","send"].forEach(v=>$("#view-"+v).classList.toggle("hidden",v!==id));window.scrollTo(0,0);}
+function maturity(it,raw){if(raw==='na'||raw==null)return null;return it.pole==='-'?(5-raw):raw;}
+function fmt(n){return n==null?"–":n.toFixed(1).replace('.',',');}
+function barClass(v){return v==null?"":(v<2.5?"low":(v<3.25?"mid":""));}
+
+/* config warning */
+if(!CONFIG.endpoint || CONFIG.endpoint.indexOf("HIER_DEINE")===0){
+  $("#cfg-banner").innerHTML='<div class="banner cfg"><strong>Einrichtung nötig:</strong> In <code>index.html</code> unter <code>CONFIG.endpoint</code> die Apps-Script-URL eintragen, sonst werden Antworten nicht gespeichert.</div>';
+}
+
+$("#role-seg").addEventListener("click",e=>{const b=e.target.closest(".seg");if(!b)return;$$("#role-seg .seg").forEach(s=>s.setAttribute("aria-pressed",s===b));respondent.role=b.dataset.role;$("#start-btn").disabled=false;});
+$("#start-btn").addEventListener("click",()=>{buildSurvey();show("survey");});
+
+function buildSurvey(){
+  answers={};const root=$("#items");root.innerHTML="";
+  $("#prog-role").textContent=respondent.role;
+  DIM_ORDER.forEach(code=>{
+    const dimEl=document.createElement("div");dimEl.className="dim";
+    dimEl.innerHTML=`<div class="dimhead"><span class="dimcode">${code}</span><span class="dimname">${DIMS[code]}</span></div>`;
+    ITEMS.filter(i=>i.dim===code).forEach(it=>{
+      const wrap=document.createElement("div");wrap.className="item";wrap.id="item-"+it.id;
+      let opts=SCALE.map(s=>`<div class="opt"><input type="radio" name="${it.id}" id="${it.id}-${s.v}" value="${s.v}"><label for="${it.id}-${s.v}"><span class="num">${s.v}</span><span class="lab">${s.lab}</span></label></div>`).join("");
+      opts+=`<div class="opt na"><input type="radio" name="${it.id}" id="${it.id}-na" value="na"><label for="${it.id}-na"><span class="num">–</span><span class="lab">keine Angabe</span></label></div>`;
+      wrap.innerHTML=`<div class="itemtop"><span class="itemno">${it.id}</span><span class="itemtext">${it.text}</span></div><div class="scale" role="radiogroup" aria-label="${it.id}">${opts}</div>`;
+      dimEl.appendChild(wrap);
+    });
+    root.appendChild(dimEl);
+  });
+  root.addEventListener("change",onAnswer);updateProgress();$("#submit-hint").textContent="";
+}
+function onAnswer(e){if(e.target.name&&e.target.type==="radio"){answers[e.target.name]=e.target.value==="na"?"na":parseInt(e.target.value,10);const it=$("#item-"+e.target.name);if(it)it.classList.remove("unanswered-flag");updateProgress();}}
+function updateProgress(){const d=Object.keys(answers).length;$("#prog-label").textContent=`${d} / ${TOTAL} beantwortet`;$("#progbar").style.width=(d/TOTAL*100)+"%";}
+$("#cancel-btn").addEventListener("click",()=>{if(confirm("Befragung abbrechen? Antworten gehen verloren."))show("start");});
+$("#submit-btn").addEventListener("click",()=>{
+  const missing=ITEMS.filter(i=>answers[i.id]==null);
+  if(missing.length){missing.forEach(i=>$("#item-"+i.id).classList.add("unanswered-flag"));$("#submit-hint").textContent=`Noch ${missing.length} offen.`;$("#item-"+missing[0].id).scrollIntoView({behavior:"smooth",block:"center"});return;}
+  finalizeAndSubmit();
+});
+
+function computeScores(ans){
+  const perDim={},dimCount={};DIM_ORDER.forEach(c=>{perDim[c]=0;dimCount[c]=0;});let sum=0,cnt=0;
+  ITEMS.forEach(it=>{const m=maturity(it,ans[it.id]);if(m!=null){perDim[it.dim]+=m;dimCount[it.dim]++;sum+=m;cnt++;}});
+  const dimAvg={};DIM_ORDER.forEach(c=>dimAvg[c]=dimCount[c]?perDim[c]/dimCount[c]:null);
+  return{dimAvg,overall:cnt?sum/cnt:null};
+}
+
+async function finalizeAndSubmit(){
+  const sc=computeScores(answers);
+  const rec={ts:new Date().toISOString(),name:"",role:respondent.role||"",answers:{...answers},dimAvg:sc.dimAvg,overall:sc.overall};
+  $("#send-inner").innerHTML=`<p class="eyebrow">Übermittlung</p><h1><span class="spin"></span>Wird gesendet …</h1>`;
+  show("send");
+  if(!CONFIG.endpoint||CONFIG.endpoint.indexOf("HIER_DEINE")===0){showError(rec,"Keine Endpoint-URL konfiguriert.");return;}
+  try{
+    await fetch(CONFIG.endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(rec)});
+    $("#res-confirm").textContent=`Alle ${TOTAL} Aussagen wurden übermittelt.`;
+    show("result");
+  }catch(err){showError(rec,err);}
+}
+function showError(rec,err){
+  const blob=new Blob([JSON.stringify(rec,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  $("#send-inner").innerHTML=`
+    <div class="banner err"><strong>Übermittlung fehlgeschlagen.</strong> ${String(err).slice(0,140)}</div>
+    <h1>Antwort nicht verloren</h1>
+    <p class="lede">Sie können die Antwort als Datei sichern und später manuell übergeben, oder es erneut versuchen.</p>
+    <div class="btnrow">
+      <a class="btn ghost" href="${url}" download="antwort_${rec.role.replace(/\\W+/g,'_')||'befragung'}_${rec.ts.slice(0,10)}.json">Antwort als Datei sichern</a>
+      <button class="btn" id="retry-btn">Erneut senden</button>
+    </div>`;
+  $("#retry-btn").addEventListener("click",()=>finalizeAndSubmit());
+}
+$("#again-btn").addEventListener("click",()=>{$$("#role-seg .seg").forEach(s=>s.setAttribute("aria-pressed","false"));respondent={role:""};$("#start-btn").disabled=true;show("start");});
+</script>
+</body>
+</html>
