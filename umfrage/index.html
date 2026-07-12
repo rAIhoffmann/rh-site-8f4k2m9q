@@ -94,8 +94,11 @@
   <section id="view-start">
     <p class="eyebrow">Diagnostik · KI-Führung</p>
     <h1>KI als Führungsaufgabe:<br>Selbsteinschätzung</h1>
-    <p class="lede">Ein kurzer Selbsttest zu Haltung, Verständnis und Führungspraxis rund um KI. 22 Aussagen, rund 7 Minuten. Es gibt keine richtigen Antworten – ehrlich ist wertvoller als gut.</p>
     <p class="lede">Vielen Dank, dass Sie an dieser Studie teilnehmen – Ihre ehrliche Einschätzung ist der wertvollste Beitrag.</p>
+    <p class="lede">In dieser Studie geht es darum herauszufinden, wie Führungskräfte in ihren Organisation den Umgang mit Künstlicher Intelligenz erleben und steuern – von der eigenen Anwendung über die strategische Einordnung bis zur Zusammenarbeit über Bereiche hinweg. Ein kurzer Selbsttest zu Haltung, Verständnis und Führungspraxis rund um KI. 22 Aussagen, rund 7 Minuten. Es gibt keine richtigen Antworten – ehrlich ist wertvoller als gut.</p>
+    <p class="lede">Zur Erläuterung:</p>
+    <p class="lede"><b>Mittleres Management:</b>Führt mehrere Teams oder andere Führungskräfte, strategisch-operative Schnittstelle, mit Budget-/Ergebnisverantwortung.</p>
+    <p class="lede"><b>Teamleitung:</b>Führt ein Team direkt, oft noch operativ mitarbeitend, nah am Tagesgeschäft.</p>
     <hr class="rule">
     <div class="card">
       <div class="field">
@@ -103,7 +106,7 @@
         <div class="segmented" id="role-seg" role="group" aria-label="Rolle">
           <button type="button" class="seg" data-role="Geschäftsleitung" aria-pressed="false">Geschäftsleitung</button>
           <button type="button" class="seg" data-role="Mittleres Management" aria-pressed="false">Mittleres Management</button>
-          <button type="button" class="seg" data-role="Teamleiter" aria-pressed="false">Teamleiter</button>
+          <button type="button" class="seg" data-role="Teamleiter" aria-pressed="false">Teamleitung</button>
           <button type="button" class="seg" data-role="Sonstige" aria-pressed="false">Sonstige</button>
         </div>
       </div>
@@ -151,7 +154,7 @@ const CONFIG = {
 };
 /* ===================================================================== */
 
-const DIMS={A:"KI-Verständnis & eigene Anwendung",B:"Führung als Disziplin",C:"Strategie, Ziel & Klammerfunktion",D:"Erwartungshaltung an KI",E:"Umgang mit Unsicherheit & Nichtwissen",F:"Experten-Identität",G:"Gemeinsames Lernen",H:"Antrieb & Druck"};
+const DIMS={A:"KI-Verständnis & eigene Anwendung",B:"Führungsaufgabe",C:"Strategie und Ziele",D:"Erwartungshaltung an KI",E:"Umgang mit Unsicherheit & Nichtwissen",F:"Fachlichkeit",G:"Gemeinsames Lernen",H:"Antrieb"};
 const ITEMS=[
  {id:"A1",dim:"A",pole:"+",text:"Ich kann für meinen Bereich konkret beschreiben, wo KI welchen Nutzen stiftet – nicht nur, dass sie „wichtig“ ist."},
  {id:"A2",dim:"A",pole:"+",text:"Ich nutze KI-Werkzeuge regelmäßig in meiner eigenen Arbeit – nicht nur privat oder zum Ausprobieren."},
@@ -159,9 +162,9 @@ const ITEMS=[
  {id:"B1",dim:"B",pole:"+",text:"Führung ist für mich eine eigene Disziplin, an der ich gezielt arbeite – nicht etwas, das sich aus Fachkompetenz von selbst ergibt."},
  {id:"B2",dim:"B",pole:"+",text:"Meine Wirkung als Führungskraft messe ich an Ergebnissen, nicht an meiner fachlichen Tiefe."},
  {id:"B3",dim:"B",pole:"+",text:"Das Vorantreiben von KI verstehe ich als eine meiner eigenen Führungsaufgaben – nicht als etwas, das eine Ebene tiefer „passiert“."},
- {id:"B4",dim:"B",pole:"+",text:"Richtung und Priorisierung bei KI behalte ich bei mir, auch wenn ich die Umsetzung delegiere."},
- {id:"C1",dim:"C",pole:"+",text:"Für unseren KI-Einsatz gibt es eine klare Richtung, die ich benennen und begründen kann."},
- {id:"C2",dim:"C",pole:"+",text:"KI ist bei uns in die Gesamtstrategie eingebettet, nicht ein Thema neben der Strategie."},
+ {id:"B4",dim:"B",pole:"+",text:"Ich trage die Verantwortung für Richtung und Priorisierung bei KI, auch wenn ich die Umsetzung delegiere."},
+ {id:"C1",dim:"C",pole:"+",text:"Für unsern KI-Einsatz gibt es eine klare Richtung von der Spitze der Organisation, die ich benennen und begründen kann."},
+ {id:"C2",dim:"C",pole:"+",text:"KI ist sowohl in der Gesamtstrategie der Organisation eine wichtige Säule, ebenso wie in meinem Teilbereich/Team."},
  {id:"C5",dim:"C",pole:"-",text:"KI soll bei uns eingeführt und skaliert werden, ohne dass mir klar ist, wozu genau."},
  {id:"C6",dim:"C",pole:"+",text:"Wenn ich etwas „zu KI“ delegiere, ist es die Umsetzung – nicht die Frage, wofür wir KI einsetzen."},
  {id:"D1",dim:"D",pole:"-",text:"Von KI erwarte ich vor allem schnelle Effizienzgewinne."},
